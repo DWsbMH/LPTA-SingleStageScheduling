@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+
+const int jobcount = 6;
+const int machinecount = 2;
+typedef int[0,jobcount-1] job_id ;
+typedef int[0,machinecount-1] machine_id ;
+
+const int proctime[jobcount] =  { 2, 6, 56, 89, 41, 8 };
+int pt(job_id id) {return proctime[id];}
+
+const int speed[machinecount] = {10 , 5};
+int sp(machine_id id) {return speed[id];}
+
+chan reserve[machinecount];
+chan release[machinecount];
+clock time;
+
+int[0,jobcount] toComplete = jobcount;</declaration><template><name x="5" y="5">Machine</name><parameter>const machine_id id</parameter><declaration>// Place local declarations here.
+</declaration><location id="id0" x="-624" y="-240"><name x="-640" y="-280">Busy</name></location><location id="id1" x="-880" y="-240"><name x="-912" y="-280">Available</name></location><init ref="id1"/><transition><source ref="id0"/><target ref="id1"/><label kind="synchronisation" x="-784" y="-168">release[id]?</label><nail x="-624" y="-176"/><nail x="-880" y="-176"/></transition><transition><source ref="id1"/><target ref="id0"/><label kind="synchronisation" x="-784" y="-264">reserve[id]?</label></transition></template><template><name>Job</name><parameter>const job_id id</parameter><declaration>clock t;
+machine_id who;</declaration><location id="id2" x="16" y="-48"><name x="-16" y="-88">Complete</name></location><location id="id3" x="-240" y="-48"><name x="-272" y="-88">InProgress</name></location><location id="id4" x="-464" y="-48"><name x="-480" y="-88">Start</name></location><init ref="id4"/><transition><source ref="id3"/><target ref="id2"/><label kind="guard" x="-184" y="-40">t &gt;= pt(id)*sp(who)/10</label><label kind="synchronisation" x="-160" y="-72">release[who]!</label><label kind="assignment" x="-168" y="-24">toComplete--</label></transition><transition><source ref="id4"/><target ref="id3"/><label kind="select" x="-424" y="-88">mid: machine_id</label><label kind="synchronisation" x="-416" y="-72">reserve[mid]!</label><label kind="assignment" x="-416" y="-40">t:=0, who=mid</label></transition></template><system>// Place template instantiations here.
+
+
+// List one or more processes to be composed into a system.
+system Machine,Job;</system></nta>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+
+const int jobcount = 6;
+const int machinecount = 2;
+typedef int[0,jobcount-1] job_id ;
+
+const int proctime[jobcount] =  { 2, 6, 56, 89, 41, 8 };
+
+int pt(job_id id) {return proctime[id];}
+
+
+chan reserve;
+chan release;
+clock time;</declaration><template><name x="5" y="5">Machine</name><declaration>// Place local declarations here.
+int[0,machinecount] free=machinecount;</declaration><location id="id0" x="-880" y="-240"><name x="-912" y="-280">OnlyState</name></location><init ref="id0"/><transition><source ref="id0"/><target ref="id0"/><label kind="guard" x="-1152" y="-232">free&lt;machinecount</label><label kind="synchronisation" x="-1152" y="-217">release?</label><label kind="assignment" x="-1152" y="-202">free++</label><nail x="-1008" y="-240"/><nail x="-1008" y="-176"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="guard" x="-744" y="-231">free&gt;=1</label><label kind="synchronisation" x="-744" y="-216">reserve?</label><label kind="assignment" x="-744" y="-201">free--</label><nail x="-752" y="-240"/><nail x="-752" y="-176"/></transition></template><template><name>Job</name><parameter>const job_id id</parameter><declaration>clock t;</declaration><location id="id1" x="-80" y="-48"><name x="-112" y="-88">Complete</name></location><location id="id2" x="-240" y="-48"><name x="-272" y="-88">InProgress</name></location><location id="id3" x="-400" y="-48"><name x="-416" y="-88">Start</name></location><init ref="id3"/><transition><source ref="id2"/><target ref="id1"/><label kind="guard" x="-208" y="-40">t &gt;= pt(id)</label><label kind="synchronisation" x="-192" y="-72">release!</label></transition><transition><source ref="id3"/><target ref="id2"/><label kind="synchronisation" x="-360" y="-72">reserve!</label><label kind="assignment" x="-352" y="-48">t:=0</label></transition></template><system>// Place template instantiations here.
+
+
+// List one or more processes to be composed into a system.
+system Machine,Job;</system></nta>
