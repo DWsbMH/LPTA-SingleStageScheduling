@@ -1,8 +1,10 @@
 Ide jon majd az absztrakt
 
-Egylépéses gyártási feladatok ütemezése időzített automatával
+Egylépéses gyártási feladatok költségoptimális ütemezése időzített automatával
 
-Szerzok
+Vida Judit
+Témavezető: Dr. Hegyháti Máté
+Széchenyi István Egyetem
 
 Rovid osszefoglalo
 
