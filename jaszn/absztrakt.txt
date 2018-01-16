@@ -1,6 +1,6 @@
 Ide jon majd az absztrakt
 
-Cim
+Egylépéses gyártási feladatok ütemezése időzített automatával
 
 Szerzok
 
