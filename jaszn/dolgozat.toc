@@ -1,4 +1,4 @@
-\contentsline {chapter}{\numberline {1}R\"ovid \"osszefoglal\'o}{2}
-\contentsline {chapter}{\numberline {2}Kifejtes}{3}
-\contentsline {chapter}{\numberline {3}Elemzes}{4}
-\contentsline {chapter}{\numberline {4}Hivatkozasok}{5}
+\select@language {magyar} \contentsline {chapter}{\numberline {1}R\"ovid \"osszefoglal\'o}{2}
+\select@language {magyar} \contentsline {chapter}{\numberline {2}Kifejtes}{3}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Elemzes}{4}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}Hivatkozasok}{5}
