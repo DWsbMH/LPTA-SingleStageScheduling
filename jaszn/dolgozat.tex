@@ -20,7 +20,41 @@ szoveges tartalomjegyzek. (nem most, hanem majd ha kesz).
 masfel oldal kb.
 
 \chapter{Irodalmi áttekintés}
-Utemezesi feladatok altalaban, gyartasi feladatok, publikalt modszerek, algoritmusok.
+Utemezesi feladatok altalaban, gyartasi feladatok, publikalt modszerek, algoritmusok.\\ \\
+Ütemezési feladatok az élet számos területén megjelennek, hiszen nagyon sok olyan élethelyzet adódik, amikor egy adott problémára meg kell találnunk a lehető legjobb, legoptimálisabb megoldást. Ezek a problémák adódhatnak mindennapi szituációkból, mint a napi feladataink felosztása, vagy ebben az esetben megtalálni a legoptimálisabb megoldást egy specifikus problémára. \\Közös bennük, hogy adottak a feladatok, a feladatokat elvégezni képes berendezések vagy eszközök, egy adott időintervallum minden feladathoz, a cél pedig, hogy a kijelölt feltételek mellett kielégítsük a végcélt. Az egyes feladatok  intervalluma az az  időtartam, ami a munka elvégzéséhez szükséges, ez általában minden esetben egyedien meghatározott, tehát minden különböző feladatnak eltérő mennyiségű időre van szüksége. A feladatoknak lehet elvégzési határideje is, amit szintén figyelembe kell venni az ütemezés folyamán.  \\
+Az elvégzendő feladatokat a szaknyelvben gyakran hívják ezen kívül munkáknak vagy  tevékenységeknek, az erőforrások pedig sok esetben gépek, amiket felszereléseknek vagy berendezéseknek neveznek. \\ \\ offline, online, semi-offline\\ \\
+Az offline típusú problémáknál minden szükséges bemeneti adat elérhető az ütemezési feladat megkezdésekor, ezzel szemben az online típusnál a döntéseket úgy kell meghozni, hogy a munka paraméterei az ütemezés kezdetekor nem elérhetők. A semi-offline a két kategória között helyezkedik el, a feladat néhány paramétere adott a döntések meghozása előtt. \\
+Ezen kívül megkülönböztetjük a sztochaikus problémákat, ahol a paraméterek futtatáskor vesznek fel értéket, az összes többi esetben a feladatot determinisztikusnak nevezzük. A két kategóriát viszont nem lehet élesen elhatárolni egymástól, hiszen vannak olyan sztochaikus feladatok, amiket semi-offline-ként lehet definiálni, \mbox{mivel néhány paraméterre szükség van az ütemezés megkezdése előtt.} 
+
+\section{Alap ütemezési problémák}
+ A vegyiparban a következőknél sokkal bonyolultabb, több paraméterrel rendelkező problémákat kell megoldani, ezek azonban a komplexebb feladatok alapját képezik. 
+ \subsection{}
+ 
+ \section{Vegyipari folyamatok ütemezése}
+ A vegyipari feladatok ütemezése komplexebb, mint az alap ütemezési problémáké, de azért sok tekintetben hasonló elveken alapul. \\ \\Az ebbe a feladatkörbe tartozó problémáknál a következő adatok adottak:
+ 
+ \begin{itemize}
+ \item  a recept
+  \item a tárolási kapacitás
+  \item a független és a körülményektől függő paraméterek
+  \item  a kiegészítő paraméterek
+ \end{itemize}
+ 
+ \section{Feltevések}
+ Ha nincsenek egyénileg meghatározva, az alábbi feltevések érvényesülnek:
+ \begin{itemize}
+ \item Egyedi helykiosztás\\Minden munka egy berendezéshez kerül társításra, még akkor is, ha több másik berendezés is el tudná végezni a feladatot
+ \item Nem preemtív\\A feladatot nem lehet megszakítani, hogy egy másikkal folytatódjon az ütemezés egy berendezésen belül
+ \item Kötegelt (szakaszos) eljárások\\Ha egy feladat folyamatos, ...........................
+ \item Meghatározott méretek\\A feldogozott anyag mennyisége nem haladhatja meg az előre adott mértéket. 
+  \end{itemize}
+ \section{Recept}
+ Az ütemezésnél három egységet különböztetünk meg.\\
+ \textbf{Termékek} az ábécé nagybetűivel jelöltek. Általában A, B, C, vagy P1, P2, P3 a Product megnevezés miatt.\\
+ \textbf{Feladatok} szintén nagybetűvel jelöltek az alapján, hogy melyik termékek tartoznak hozzájuk (Pl. A1, A2, A3), de néhány helyen alkalmazzák a T1 jelölést is, matematikai képletekben pedig alsó indexben i karaktert a feladatok jelölésére.\\ \\
+ \textbf{Berendezések} leginkább U1, U2, U3... jelöléssel jelenik meg a Unit megfelelője miatt. Ritkábban, de használatos E karakterrel is, matematikai képletekben pedig j alsó indexként.\\
+  
+
 4-5 oldal
 sok hivatkozas
 
