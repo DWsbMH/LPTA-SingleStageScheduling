@@ -1,0 +1,183 @@
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Kikapcsolt Gep(2).Kikapcsolt Gep(3).Kikapcsolt Feladatok(0).Start Feladatok(1).Start Feladatok(2).Start Feladatok(3).Start Feladatok(4).Start )
+time=0 Feladatok(0).ora=0 Feladatok(1).ora=0 Feladatok(2).ora=0 Feladatok(3).ora=0 Feladatok(4).ora=0 todo=5 Feladatok(0).melyik=0 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=0 Feladatok(4).melyik=0 rate=0 cost=0
+
+Delay: 175
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Kikapcsolt Gep(2).Kikapcsolt Gep(3).Kikapcsolt Feladatok(0).Start Feladatok(1).Start Feladatok(2).Start Feladatok(3).Start Feladatok(4).Start )
+time=175 Feladatok(0).ora=175 Feladatok(1).ora=175 Feladatok(2).ora=175 Feladatok(3).ora=175 Feladatok(4).ora=175 todo=5 Feladatok(0).melyik=0 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=0 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Gep(1).Kikapcsolt->Gep(1).Bekapcsolt { time >= beallasido[id], tau, 1 }
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Bekapcsolt Gep(2).Kikapcsolt Gep(3).Kikapcsolt Feladatok(0).Start Feladatok(1).Start Feladatok(2).Start Feladatok(3).Start Feladatok(4).Start )
+time=175 Feladatok(0).ora=175 Feladatok(1).ora=175 Feladatok(2).ora=175 Feladatok(3).ora=175 Feladatok(4).ora=175 todo=5 Feladatok(0).melyik=0 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=0 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Gep(2).Kikapcsolt->Gep(2).Bekapcsolt { time >= beallasido[id], tau, 1 }
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Bekapcsolt Gep(2).Bekapcsolt Gep(3).Kikapcsolt Feladatok(0).Start Feladatok(1).Start Feladatok(2).Start Feladatok(3).Start Feladatok(4).Start )
+time=175 Feladatok(0).ora=175 Feladatok(1).ora=175 Feladatok(2).ora=175 Feladatok(3).ora=175 Feladatok(4).ora=175 todo=5 Feladatok(0).melyik=0 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=0 Feladatok(4).melyik=0 rate=0 cost=0
+
+Delay: 89
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Bekapcsolt Gep(2).Bekapcsolt Gep(3).Kikapcsolt Feladatok(0).Start Feladatok(1).Start Feladatok(2).Start Feladatok(3).Start Feladatok(4).Start )
+time=264 Feladatok(0).ora=264 Feladatok(1).ora=264 Feladatok(2).ora=264 Feladatok(3).ora=264 Feladatok(4).ora=264 todo=5 Feladatok(0).melyik=0 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=0 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Feladatok(0).Start->Feladatok(0).Munka { 1, foglal[2]!, melyik := 2, ora := 0 }
+  Gep(2).Bekapcsolt->Gep(2).Dolgozik { 1, foglal[id]?, 1 }
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Kikapcsolt Feladatok(0).Munka Feladatok(1).Start Feladatok(2).Start Feladatok(3).Start Feladatok(4).Start )
+time=264 Feladatok(0).ora=0 Feladatok(1).ora=264 Feladatok(2).ora=264 Feladatok(3).ora=264 Feladatok(4).ora=264 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=0 Feladatok(4).melyik=0 rate=0 cost=0
+
+Delay: 129
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Kikapcsolt Feladatok(0).Munka Feladatok(1).Start Feladatok(2).Start Feladatok(3).Start Feladatok(4).Start )
+time=393 Feladatok(0).ora=129 Feladatok(1).ora=393 Feladatok(2).ora=393 Feladatok(3).ora=393 Feladatok(4).ora=393 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=0 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Feladatok(3).Start->Feladatok(3).Munka { 1, foglal[1]!, melyik := 1, ora := 0 }
+  Gep(1).Bekapcsolt->Gep(1).Dolgozik { 1, foglal[id]?, 1 }
+
+State:
+( Gep(0).Kikapcsolt Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Kikapcsolt Feladatok(0).Munka Feladatok(1).Start Feladatok(2).Start Feladatok(3).Munka Feladatok(4).Start )
+time=393 Feladatok(0).ora=129 Feladatok(1).ora=393 Feladatok(2).ora=393 Feladatok(3).ora=0 Feladatok(4).ora=393 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Gep(0).Kikapcsolt->Gep(0).Bekapcsolt { time >= beallasido[id], tau, 1 }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Kikapcsolt Feladatok(0).Munka Feladatok(1).Start Feladatok(2).Start Feladatok(3).Munka Feladatok(4).Start )
+time=393 Feladatok(0).ora=129 Feladatok(1).ora=393 Feladatok(2).ora=393 Feladatok(3).ora=0 Feladatok(4).ora=393 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Feladatok(2).Start->Feladatok(2).Munka { 1, foglal[0]!, melyik := 0, ora := 0 }
+  Gep(0).Bekapcsolt->Gep(0).Dolgozik { 1, foglal[id]?, 1 }
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Kikapcsolt Feladatok(0).Munka Feladatok(1).Start Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Start )
+time=393 Feladatok(0).ora=129 Feladatok(1).ora=393 Feladatok(2).ora=0 Feladatok(3).ora=0 Feladatok(4).ora=393 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Gep(3).Kikapcsolt->Gep(3).Bekapcsolt { time >= beallasido[id], tau, 1 }
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Munka Feladatok(1).Start Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Start )
+time=393 Feladatok(0).ora=129 Feladatok(1).ora=393 Feladatok(2).ora=0 Feladatok(3).ora=0 Feladatok(4).ora=393 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=0 cost=0
+
+Delay: 818
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Munka Feladatok(1).Start Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Start )
+time=1211 Feladatok(0).ora=947 Feladatok(1).ora=1211 Feladatok(2).ora=818 Feladatok(3).ora=818 Feladatok(4).ora=1211 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=0 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Feladatok(1).Start->Feladatok(1).Munka { 1, foglal[3]!, melyik := 3, ora := 0 }
+  Gep(3).Bekapcsolt->Gep(3).Dolgozik { 1, foglal[id]?, 1 }
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Dolgozik Feladatok(0).Munka Feladatok(1).Munka Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Start )
+time=1211 Feladatok(0).ora=947 Feladatok(1).ora=0 Feladatok(2).ora=818 Feladatok(3).ora=818 Feladatok(4).ora=1211 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=0 cost=0
+
+Delay: 53
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Dolgozik Feladatok(0).Munka Feladatok(1).Munka Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Start )
+time=1264 Feladatok(0).ora=1000 Feladatok(1).ora=53 Feladatok(2).ora=871 Feladatok(3).ora=871 Feladatok(4).ora=1264 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=0 cost=0
+
+Transitions:
+  Feladatok(0).Munka->Feladatok(0).Kesz { ora >= munkaido[melyik][id], elenged[melyik]!, 1 }
+  Gep(2).Dolgozik->Gep(2).Bekapcsolt { 1, elenged[id]?, 1 }
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Bekapcsolt Gep(3).Dolgozik Feladatok(0).Kesz Feladatok(1).Munka Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Start )
+time=1264 Feladatok(0).ora=1000 Feladatok(1).ora=53 Feladatok(2).ora=871 Feladatok(3).ora=871 Feladatok(4).ora=1264 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=0 rate=1 cost=0
+
+Transitions:
+  Feladatok(4).Start->Feladatok(4).Munka { 1, foglal[2]!, melyik := 2, ora := 0 }
+  Gep(2).Bekapcsolt->Gep(2).Dolgozik { 1, foglal[id]?, 1 }
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Dolgozik Feladatok(0).Kesz Feladatok(1).Munka Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Munka )
+time=1264 Feladatok(0).ora=1000 Feladatok(1).ora=53 Feladatok(2).ora=871 Feladatok(3).ora=871 Feladatok(4).ora=0 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=1 cost=0
+
+Delay: 736
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Dolgozik Feladatok(0).Kesz Feladatok(1).Munka Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=1 cost=736
+
+Transitions:
+  Feladatok(1).Munka->Feladatok(1).Kesz { ora >= munkaido[melyik][id], elenged[melyik]!, 1 }
+  Gep(3).Dolgozik->Gep(3).Bekapcsolt { 1, elenged[id]?, 1 }
+
+State:
+( Gep(0).Dolgozik Gep(1).Dolgozik Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Kesz Feladatok(1).Kesz Feladatok(2).Munka Feladatok(3).Munka Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=2 cost=736
+
+Transitions:
+  Feladatok(3).Munka->Feladatok(3).Kesz { ora >= munkaido[melyik][id], elenged[melyik]!, 1 }
+  Gep(1).Dolgozik->Gep(1).Bekapcsolt { 1, elenged[id]?, 1 }
+
+State:
+( Gep(0).Dolgozik Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Kesz Feladatok(1).Kesz Feladatok(2).Munka Feladatok(3).Kesz Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=3 cost=736
+
+Transitions:
+  Feladatok(2).Munka->Feladatok(2).Kesz { ora >= munkaido[melyik][id], elenged[melyik]!, 1 }
+  Gep(0).Dolgozik->Gep(0).Bekapcsolt { 1, elenged[id]?, 1 }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Kesz Feladatok(1).Kesz Feladatok(2).Kesz Feladatok(3).Kesz Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=5 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=4 cost=736
+
+Transitions:
+  Feladatok(1).Kesz->Feladatok(1).Leszallitva { time == hatarido[id], tau, todo-- }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Kesz Feladatok(1).Leszallitva Feladatok(2).Kesz Feladatok(3).Kesz Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=4 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=3 cost=736
+
+Transitions:
+  Feladatok(2).Kesz->Feladatok(2).Leszallitva { time == hatarido[id], tau, todo-- }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Kesz Feladatok(1).Leszallitva Feladatok(2).Leszallitva Feladatok(3).Kesz Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=3 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=2 cost=736
+
+Transitions:
+  Feladatok(3).Kesz->Feladatok(3).Leszallitva { time == hatarido[id], tau, todo-- }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Kesz Feladatok(1).Leszallitva Feladatok(2).Leszallitva Feladatok(3).Leszallitva Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=2 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=1 cost=736
+
+Transitions:
+  Feladatok(0).Kesz->Feladatok(0).Leszallitva { time == hatarido[id], tau, todo-- }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Bekapcsolt Gep(2).Dolgozik Gep(3).Bekapcsolt Feladatok(0).Leszallitva Feladatok(1).Leszallitva Feladatok(2).Leszallitva Feladatok(3).Leszallitva Feladatok(4).Munka )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=1 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=0 cost=736
+
+Transitions:
+  Feladatok(4).Munka->Feladatok(4).Kesz { ora >= munkaido[melyik][id], elenged[melyik]!, 1 }
+  Gep(2).Dolgozik->Gep(2).Bekapcsolt { 1, elenged[id]?, 1 }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Bekapcsolt Gep(2).Bekapcsolt Gep(3).Bekapcsolt Feladatok(0).Leszallitva Feladatok(1).Leszallitva Feladatok(2).Leszallitva Feladatok(3).Leszallitva Feladatok(4).Kesz )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=1 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=1 cost=736
+
+Transitions:
+  Feladatok(4).Kesz->Feladatok(4).Leszallitva { time == hatarido[id], tau, todo-- }
+
+State:
+( Gep(0).Bekapcsolt Gep(1).Bekapcsolt Gep(2).Bekapcsolt Gep(3).Bekapcsolt Feladatok(0).Leszallitva Feladatok(1).Leszallitva Feladatok(2).Leszallitva Feladatok(3).Leszallitva Feladatok(4).Leszallitva )
+time=2000 Feladatok(0).ora=1736 Feladatok(1).ora=789 Feladatok(2).ora=1607 Feladatok(3).ora=1607 Feladatok(4).ora=736 todo=0 Feladatok(0).melyik=2 Feladatok(1).melyik=3 Feladatok(2).melyik=0 Feladatok(3).melyik=1 Feladatok(4).melyik=2 rate=0 cost=736

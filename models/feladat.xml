@@ -14,6 +14,15 @@ const int munkaido[gepszam][munkaszam] =
 {1194, 789, 818, 2143, 1017/*, 3200, 3214, 1440, 2459, 3000, 3000, 5600, 6716, 1527, 2985/*, 783, 3036, 10000000, 2687, 1600, 100, 1000000, 1000, 4000, 4902*/}
 };
 
+int minTime(munka_id mid){
+  int toReturn=9999;
+  for(gid: gep_id) {
+    if(munkaido[gid][mid]&lt;toReturn) toReturn = munkaido[gid][mid];
+  }
+return toReturn;
+}
+
+
 const int hatarido[munkaszam] = {2000, 2000, 2000, 2000, 2000/*, 300, 210, 260, 300, 209, 300, 210, 300, 250, 240/*, 300, 300, 300, 130, 190, 300, 200, 120, 300, 170*/};
 
 const int beallasido[gepszam] = {180, 175, 0, 237};
@@ -26,7 +35,7 @@ clock time;
 int[0,munkaszam] todo = munkaszam;</declaration><template><name x="5" y="5">Gep</name><parameter>const gep_id id</parameter><declaration>// Place local declarations here.
 </declaration><location id="id0" x="-344" y="-64"><name x="-376" y="-96">Kikapcsolt</name></location><location id="id1" x="56" y="-64"><name x="72" y="-80">Dolgozik</name></location><location id="id2" x="-128" y="-64"><name x="-208" y="-96">Bekapcsolt</name></location><init ref="id0"/><transition><source ref="id0"/><target ref="id2"/><label kind="guard" x="-344" y="-48">time &gt;= beallasido[id]</label></transition><transition><source ref="id2"/><target ref="id1"/><label kind="synchronisation" x="-64" y="-144">foglal[id]?</label><nail x="-128" y="-120"/><nail x="56" y="-120"/></transition><transition><source ref="id1"/><target ref="id2"/><label kind="synchronisation" x="-72" y="-8">elenged[id]?</label><nail x="56" y="-8"/><nail x="-128" y="-8"/></transition></template><template><name>Feladatok</name><parameter>const munka_id id</parameter><declaration>gep_id melyik;
 clock ora;
-</declaration><location id="id3" x="-96" y="152"><name x="-192" y="144">Leszallitva</name></location><location id="id4" x="-96" y="64"><name x="-152" y="56">Kesz</name><label kind="invariant" x="-80" y="56">cost' == 1</label></location><location id="id5" x="-96" y="-32"><name x="-160" y="-40">Munka</name></location><location id="id6" x="-96" y="-152"><name x="-152" y="-160">Start</name></location><init ref="id6"/><transition><source ref="id4"/><target ref="id3"/><label kind="guard" x="-88" y="96">time == hatarido[id]</label><label kind="assignment" x="-88" y="112">todo--</label></transition><transition><source ref="id5"/><target ref="id4"/><label kind="guard" x="-88" y="-8">ora &gt;= munkaido[melyik][id]</label><label kind="synchronisation" x="-88" y="8">elenged[melyik]!</label></transition><transition><source ref="id6"/><target ref="id5"/><label kind="select" x="-88" y="-128">gid: gep_id</label><label kind="synchronisation" x="-88" y="-104">foglal[gid]!</label><label kind="assignment" x="-88" y="-80">melyik=gid, ora=0</label></transition></template><system>// Place template instantiations here.
+</declaration><location id="id3" x="-96" y="152"><name x="-192" y="144">Leszallitva</name></location><location id="id4" x="-96" y="64"><name x="-152" y="56">Kesz</name><label kind="invariant" x="-80" y="56">cost' == 1</label></location><location id="id5" x="-96" y="-32"><name x="-160" y="-40">Munka</name></location><location id="id6" x="-96" y="-152"><name x="-152" y="-160">Start</name><label kind="invariant" x="-72" y="-160">time &lt;= hatarido[id] - minTime(id)</label></location><init ref="id6"/><transition><source ref="id4"/><target ref="id3"/><label kind="guard" x="-88" y="96">time == hatarido[id]</label><label kind="assignment" x="-88" y="112">todo--</label></transition><transition><source ref="id5"/><target ref="id4"/><label kind="guard" x="-88" y="-8">ora &gt;= munkaido[melyik][id]</label><label kind="synchronisation" x="-88" y="8">elenged[melyik]!</label></transition><transition><source ref="id6"/><target ref="id5"/><label kind="select" x="-88" y="-128">gid: gep_id</label><label kind="synchronisation" x="-88" y="-104">foglal[gid]!</label><label kind="assignment" x="-88" y="-80">melyik=gid, ora=0</label></transition></template><system>// Place template instantiations here.
 
 
 // List one or more processes to be composed into a system.
