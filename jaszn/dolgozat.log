@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.2)  28 JAN 2018 17:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.2)  5 FEB 2018 21:53
 entering extended mode
 **./dolgozat.tex
 (dolgozat.tex
@@ -439,46 +439,57 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--56
+Underfull \hbox (badness 10000) in paragraph at lines 52--57
 
  []
 
+[4]
+Overfull \hbox (0.9433pt too wide) in paragraph at lines 59--60
+\T1/cmr/m/n/10 Ebben a dol-go-zat-ban id®-zí-tett au-to-ma-ták-kal fog-lal-ko-z
+unk a meg-ha-tá-ro-zott prob-
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--56
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
-[4] [5]
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+[6]
 3. fejezet.
-[6
-
-]
-4. fejezet.
 [7
 
 ]
-5. fejezet.
+4. fejezet.
 [8
 
 ]
-6. fejezet.
+5. fejezet.
 [9
 
 ]
-7. fejezet.
+6. fejezet.
 [10
 
-] [11
+]
+7. fejezet.
+[11
+
+] [12
 
 ]
 A. f\"uggel\'ek.
-[12
+[13
 
 ] (dolgozat.aux) ) 
 Here is how much of TeX's memory you used:
  1969 strings out of 493323
  29436 string characters out of 3139067
- 94560 words of memory out of 3000000
+ 95560 words of memory out of 3000000
  5535 multiletter control sequences out of 15000+200000
  14862 words of font info for 34 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -493,10 +504,13 @@ Judit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk>
 <C:\Users\Judit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecr
 m1200.pk> <C:\Users\Judit\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
 dpi600\ecrm1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb>
-Output written on dolgozat.pdf (13 pages, 127845 bytes).
+cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on dolgozat.pdf (14 pages, 179118 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
+ 427 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

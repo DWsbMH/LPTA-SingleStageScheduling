@@ -50,9 +50,42 @@ Ezen kívül megkülönböztetjük a sztochaikus problémákat, ahol a paraméte
   \end{itemize}
  \section{Recept}
  Az ütemezésnél három egységet különböztetünk meg.\\
- \textbf{Termékek} az ábécé nagybetűivel jelöltek. Általában A, B, C, vagy P1, P2, P3 a Product megnevezés miatt.\\
- \textbf{Feladatok} szintén nagybetűvel jelöltek az alapján, hogy melyik termékek tartoznak hozzájuk (Pl. A1, A2, A3), de néhány helyen alkalmazzák a T1 jelölést is, matematikai képletekben pedig alsó indexben i karaktert a feladatok jelölésére.\\ \\
- \textbf{Berendezések} leginkább U1, U2, U3... jelöléssel jelenik meg a Unit megfelelője miatt. Ritkábban, de használatos E karakterrel is, matematikai képletekben pedig j alsó indexként.\\
+ \textbf{Termékek}\\
+ \textbf{Feladatok} \\ \\
+ \textbf{Berendezések} \\
+  (melyiket mivel fogjuk jelölni)
+  
+  \section{Egyéb megoldó módszerek}
+  Ebben a dolgozatban időzített automatákkal foglalkozunk a meghatározott probléma megoldására, de ezen felül számos más módszerrel lehet megközelíteni a gyártási vagy egyéb folyamatok optimalizálását. Ezekkel a módszerekkel már sikeresen megoldottak hasonló problémákat, ezeket az eddig publikált módszereket említjük meg röviden.
+  \subsection{MILP modellek}
+  A MILP modellek a legelterjedtebb megoldó módszerek közé tartoznak, és több altípusuk létezik.
+  \subsubsection{Time discretization based}
+  A módszer alapján időpontokat és időréseket különböztetünk meg. A időrés az az intervallum, amely egyik időponttól a következőig tart, az időpont pedig ennek a fordítottja, tehát az időrés kezdete az egyik időpont, az időrés vége pedig egy másik. \\
+  A feladatokhoz bináris változókat rendelnek aszerint, hogy a feladat az adott időpontban elvégzésre kerül, vagy nem. Amikor a feladat abban az időpontban megvalósul, akkor 1 lesz a bináris változó értéke, ha nem, akkor 0. Így annyi bináris változóra lesz szükség, ahány időpontot meghatároztunk. Lehetőleg minél kisebb számú időpont felvételével kell megtalálni az optimális megoldást, ezért alkalmazzák a következő algoritmust.
+  \\A lehető legkevesebb időponttal kezdik meg az optimalizálási folyamatot, de mivel az eredmény nem lesz pontos, minden egyes sikeres optimalizálás elvégzése után növelik az időpontok számát, amíg egyre jobb értéket kapnak. \\
+  Az időfelosztásos modellek előnye, hogy széles skálán mozog a megoldható problémák típusa, ...
+ Két altípust különböztetnek meg az alapján, hogy az időpontokat az optimalizálás előtt meghatározzák, ezek a Fix időpontos időfelosztásos módszerek, vagy pedig csak a feladat közben kerül meghatározásra az időpontok száma. Utóbbiakat Variable time model-eknek hívják, és a lényegük, hogy minél kevesebb bináris változóra legyen szükség. A modellekben folyamatos változókat használnak, amik meghatározzák mindegyik időponthoz tartozó feladatokat. 
+ \\- rossz LP relaxáció (?)
+ \\-big M
+ \\-kevés bináris változó -> jobb CPU teljesítmény
+  
+  
+ 
+  \subsubsection{Precedence based formulations (elsőbbségi alapú)}
+  Jobb számítási hatékonysággal rendelkező módszer, mint az időfelosztásos, viszont nem alkalmazható olyan széles körben. Két típusú változó jelenik meg a modellben, mindegyik bináris.\\
+  \begin{displaymath}
+ Y_(ij):\end{displaymath} 	ahol i a feladat, j pedig a berendezés. Akkor ad 1 értéket, ha j berendezés elvégzi i feladatot \\ 
+   \begin{displaymath}X_(iji')\end{displaymath}
+   A változó értéke akkor 1, ha j berendezés i és i' feladatot is ellátja, valamint i-t korábban végzi el, mint i'-t.
+   
+  
+  \subsection{Analysis based (elemzés alapú)}
+  Az elemzés alapú formákat is széles körben használják az optimalizálásban, mert számos előnyük van a MILP modellekhez és az S-gráfokhoz képest, mégis összességében elmarad a hatékonyságuk az imént említett módszerekétől. \\Két legfontosabb fajtájuk az időzített Petri-háló és az időzített automata. A Petri hálókkal és automatákkal leginkább diszkrét típusú eseményeket modelleznek, a hatékonyság növelése miatt az alap modellek kiegészültek időzítéssel. 
+ 
+  \subsection{S-gráf}
+  Az első gráf alapú optimalizációra fejlesztett módszer, amely nemcsak vizuálisan szemlélteti a folyamatot, de egyben egy matematikai modell is. Irányított gráfokból áll, amelynek a csomópontjai feladatok és az azokon elvégzendő műveletek, amelyeket az élek kötnek össze őket.
+  \subsubsection{Megoldó algoritmusok}
+  
   
 
 4-5 oldal
