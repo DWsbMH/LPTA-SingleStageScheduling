@@ -1,0 +1,25 @@
+
+<svg height="120" width="1100">
+     
+  
+  <g class="bar">
+    <rect x="132" y="0" width="868" height="19"></rect>
+    <text x="0" y="8" dy=".35em">Feladat 0</text>
+  </g>
+  <g class="bar">
+    <rect x="605" y="20" width="395" height="19"></rect>
+    <text x="0" y="28" dy=".35em">Feladat 1</text>
+  </g>
+  <g class="bar">
+    <rect x="605" y="40" width="395" height="19"></rect>
+	<text x="0" y="48" dy=".35em" font-size="35">Feladat 2</text>
+  </g>
+  <g class="bar">
+    <rect x="196" y="60" width="804" height="19"></rect>
+    <text x="0" y="68" dy=".85em">Feladat 3</text>
+  </g>
+  <g class="bar">
+    <rect x="632" y="80" width="368" height="19"></rect>
+    <text x="0" y="88" dy=".35em">Feladat 4</text>
+  </g>
+</svg>
