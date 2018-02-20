@@ -6,18 +6,56 @@ const int gepszam = 4;
 typedef int[0,munkaszam-1] munka_id;
 typedef int[0, gepszam-1] gep_id;
 
-const int munkaido[gepszam][munkaszam] = 
+/*const int munkaido[gepszam][munkaszam] = 
 {
-{1538, 1500, 1607, 1000, 1000/*, 5263, 4865, 10000, 1000, 1000, 1000, 100000, 11250, 2632, 5000/*, 1250, 4474, 1000, 100000, 2424, 9317, 1000, 1000, 100000, 5952*/},
-{1000, 1000, 1000, 1564, 1000/*, 5000, 4000, 1000, 1000, 1282, 3750, 6796, 100000, 1000, 100000/*, 1000, 100000, 1492, 3130, 1000, 2000, 3000, 4000, 5000, 6000*/},
-{1000, 1000, 1000, 1564, 736/*, 5000, 3025, 1500, 1869, 1000, 2000, 7000, 6000, 1000, 100000/*, 10000, 5000, 1000, 3000, 1074, 3614, 864, 3624, 2667, 3448*/},
-{1194, 789, 818, 2143, 1017/*, 3200, 3214, 1440, 2459, 3000, 3000, 5600, 6716, 1527, 2985/*, 783, 3036, 10000000, 2687, 1600, 100, 1000000, 1000, 4000, 4902*/}
+{1538, 1500, 1607, 1000, 1000, 5263, 4865, 10000, 1000, 1000, 1000, 100000, 11250, 2632, 5000/*, 1250, 4474, 1000, 100000, 2424, 9317, 1000, 1000, 100000, 5952},
+{1000, 1000, 1000, 1564, 1000, 5000, 4000, 1000, 1000, 1282, 3750, 6796, 100000, 1000, 100000/*, 1000, 100000, 1492, 3130, 1000, 2000, 3000, 4000, 5000, 6000},
+{1000, 1000, 1000, 1564, 736, 5000, 3025, 1500, 1869, 1000, 2000, 7000, 6000, 1000, 100000/*, 10000, 5000, 1000, 3000, 1074, 3614, 864, 3624, 2667, 3448},
+{1194, 789, 818, 2143, 1017, 3200, 3214, 1440, 2459, 3000, 3000, 5600, 6716, 1527, 2985/*, 783, 3036, 10000000, 2687, 1600, 100, 1000000, 1000, 4000, 4902}
+};*/
+
+const int munkaido2[munkaszam][gepszam] = 
+{
+{1538, 1000, 1000, 1194},
+{1500, 1000, 1000, 789},
+{1607, 1000, 1000, 818},
+{1000, 1564, 1564, 2143},
+{1000, 1000, 736, 1017}/*
+{5263, 5000,5000, 3200},
+{4865, 4000, 3025, 3214},
+{10000, 1000, 1500, 1440},
+{1000, 1000, 1869, 2459},
+{1000, 1282, 1000, 3000},
+{1000, 3750, 2000, 3000},
+{10000, 6796, 7000, 5600},
+{11250, 100000, 6000, 6716},
+{2632, 1000, 1000, 1527},
+{5000, 100000, 100000, 2985},
+{1250, 1000, 10000, 783},
+{4474, 100000, 5000, 3036},
+{1000, 1492, 1000, 10000000},
+{100000, 3130, 3000, 2687},
+{2424, 1000, 1074, 1600},
+{9317, 2000, 3614, 100},
+{1000, 3000, 864, 1000000},
+{1000, 4000, 3624, 1000},
+{100000, 5000, 2667, 4000},
+{5952, 6000, 3448, 4902}*/
+};
+
+const int atallasi_ido[munkaszam][munkaszam] = 
+{
+{0, 300, 800, 1500, 600},
+{200, 0, 1300, 900, 2500},
+{500, 900, 0, 500, 700},
+{1100, 700, 200, 0, 800},
+{500, 1000, 0, 1300, 0}
 };
 
 int minTime(munka_id mid){
   int toReturn=9999;
   for(gid: gep_id) {
-    if(munkaido[gid][mid]&lt;toReturn) toReturn = munkaido[gid][mid];
+    if(munkaido2[mid][gid]&lt;toReturn) toReturn = munkaido2[mid][gid];
   }
 return toReturn;
 }
@@ -33,9 +71,9 @@ chan elenged[gepszam];
 clock time;
 
 int[0,munkaszam] todo = munkaszam;</declaration><template><name x="5" y="5">Gep</name><parameter>const gep_id id</parameter><declaration>// Place local declarations here.
-</declaration><location id="id0" x="-40" y="-176"><name x="-50" y="-206">Beallitva</name></location><location id="id1" x="-344" y="-64"><name x="-376" y="-96">Kikapcsolt</name></location><location id="id2" x="56" y="-64"><name x="72" y="-80">Dolgozik</name></location><location id="id3" x="-128" y="-64"><name x="-208" y="-96">Bekapcsolt</name></location><init ref="id1"/><transition><source ref="id0"/><target ref="id2"/><nail x="48" y="-176"/><nail x="56" y="-176"/></transition><transition><source ref="id1"/><target ref="id3"/><label kind="guard" x="-344" y="-48">time &gt;= beallasido[id]</label></transition><transition><source ref="id3"/><target ref="id0"/><label kind="synchronisation" x="-200" y="-176">foglal[id]?</label><nail x="-128" y="-176"/><nail x="-72" y="-176"/><nail x="-56" y="-176"/></transition><transition><source ref="id2"/><target ref="id3"/><label kind="synchronisation" x="-72" y="-8">elenged[id]?</label><nail x="56" y="-8"/><nail x="-128" y="-8"/></transition></template><template><name>Feladatok</name><parameter>const munka_id id</parameter><declaration>gep_id melyik;
+</declaration><location id="id0" x="-40" y="-176"><name x="-50" y="-206">Beallitva</name></location><location id="id1" x="-344" y="-64"><name x="-376" y="-96">Kikapcsolt</name></location><location id="id2" x="56" y="-64"><name x="72" y="-80">Dolgozik</name></location><location id="id3" x="-128" y="-64"><name x="-208" y="-96">Bekapcsolt</name></location><init ref="id1"/><transition><source ref="id0"/><target ref="id2"/><nail x="48" y="-176"/><nail x="56" y="-176"/></transition><transition><source ref="id1"/><target ref="id3"/><label kind="guard" x="-344" y="-48">time &gt;= beallasido[id]</label></transition><transition><source ref="id3"/><target ref="id0"/><label kind="select" x="-368" y="-152">mid: munka_id</label><label kind="guard" x="-264" y="-152">time&gt;=atallasi_ido[mid][mid]</label><label kind="synchronisation" x="-200" y="-176">foglal[id]?</label><nail x="-128" y="-176"/><nail x="-72" y="-176"/><nail x="-56" y="-176"/></transition><transition><source ref="id2"/><target ref="id3"/><label kind="synchronisation" x="-72" y="-8">elenged[id]?</label><nail x="56" y="-8"/><nail x="-128" y="-8"/></transition></template><template><name>Feladatok</name><parameter>const munka_id id</parameter><declaration>gep_id melyik;
 clock ora;
-</declaration><location id="id4" x="-96" y="152"><name x="-192" y="144">Leszallitva</name></location><location id="id5" x="-96" y="64"><name x="-152" y="56">Kesz</name><label kind="invariant" x="-80" y="56">cost' == 1</label></location><location id="id6" x="-96" y="-32"><name x="-160" y="-40">Munka</name></location><location id="id7" x="-96" y="-152"><name x="-152" y="-160">Start</name><label kind="invariant" x="-72" y="-160">time &lt;= hatarido[id] - minTime(id)</label></location><init ref="id7"/><transition><source ref="id5"/><target ref="id4"/><label kind="guard" x="-88" y="96">time == hatarido[id]</label><label kind="assignment" x="-88" y="112">todo--</label></transition><transition><source ref="id6"/><target ref="id5"/><label kind="guard" x="-88" y="-8">ora &gt;= munkaido[melyik][id]</label><label kind="synchronisation" x="-88" y="8">elenged[melyik]!</label></transition><transition><source ref="id7"/><target ref="id6"/><label kind="select" x="-88" y="-128">gid: gep_id</label><label kind="synchronisation" x="-88" y="-104">foglal[gid]!</label><label kind="assignment" x="-88" y="-80">melyik=gid, ora=0</label></transition></template><system>// Place template instantiations here.
+</declaration><location id="id4" x="-96" y="152"><name x="-192" y="144">Leszallitva</name></location><location id="id5" x="-96" y="64"><name x="-152" y="56">Kesz</name><label kind="invariant" x="-80" y="56">cost' == 1</label></location><location id="id6" x="-96" y="-32"><name x="-160" y="-40">Munka</name></location><location id="id7" x="-96" y="-152"><name x="-152" y="-160">Start</name><label kind="invariant" x="-72" y="-160">time &lt;= hatarido[id] - minTime(id)</label></location><init ref="id7"/><transition><source ref="id5"/><target ref="id4"/><label kind="guard" x="-88" y="96">time == hatarido[id]</label><label kind="assignment" x="-88" y="112">todo--</label></transition><transition><source ref="id6"/><target ref="id5"/><label kind="guard" x="-88" y="-8">ora &gt;= munkaido2[id][melyik]</label><label kind="synchronisation" x="-88" y="8">elenged[melyik]!</label></transition><transition><source ref="id7"/><target ref="id6"/><label kind="select" x="-88" y="-128">gid: gep_id</label><label kind="synchronisation" x="-88" y="-104">foglal[gid]!</label><label kind="assignment" x="-88" y="-80">melyik=gid, ora=0</label></transition></template><system>// Place template instantiations here.
 
 
 // List one or more processes to be composed into a system.
