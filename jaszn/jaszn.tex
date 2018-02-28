@@ -38,7 +38,7 @@ A single stage problémáknak a megoldásához néhány paraméternek adottnak k
 
 \section{Az egylépéses ütemezés ábrázolása}
 Az egylépéses ütemezési problémákat általában táblázat segítségével adják meg, ahol a sorokban tüntetik fel a munkákat, az oszlopokban pedig a rendelkezésre álló berendezéseket, a táblázatbeli metszéspontjaik ábrázolják az egyes munkák megfelelő berendezéseken való elvégzésének munkaidejét. Kopanos részletesen foglalkozott egylépéses ütemezéssel. \\
-\begin{figure}
+\begin{figure}[htpb]
 \begin{center}
 \includegraphics{tablazat1}\\
 \caption{Példa egylépéses ütemezési feladat megadására.}
@@ -128,7 +128,7 @@ A főmenüben leginkább az általános lehetőségeket találjuk, a Tools és a
 \chapter{Teszteredmények, összehasonlítás}
 A modellt először a szükséges korlátozásokon kívül egyéb korlátozásokkal nem egészítettük ki, amikkel csökkenteni lehetett volna az ütemezés futási idejét. A Query-ben megadott cél az volt, hogy olyan megoldást találjon, amikor az összes feladatot sikeresen elvégzi, tehát leszállításra kerülnek határidőre.\\
 Mivel az modellt 10 percen belül nem tudta lefuttatni az UPPAAL, az irodalmi példában szereplő 20 feladat helyett először 1 feladattal került tesztelésre az automata futási ideje, majd egyesével növeltük a feladatok számát addig, amíg a modell képes volt tíz percen belül megoldást találni rá. Az eredményeket az alábbi táblázat tartalmazza.
-\begin{figure}
+\begin{figure}[htpb]
 \begin{center}
 \includegraphics[height=4.4cm]{tablazat_2}
 \caption{Futási eredmények korlátozás nélkül.}
