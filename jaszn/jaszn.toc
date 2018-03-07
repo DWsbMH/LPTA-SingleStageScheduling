@@ -1,0 +1,18 @@
+\select@language {magyar} \contentsline {chapter}{\numberline {1}Bevezet\IeC {\'e}s}{2}
+\select@language {magyar} \contentsline {chapter}{\numberline {2}Irodalmi \IeC {\'a}ttekint\IeC {\'e}s}{4}
+\select@language {magyar} \contentsline {section}{\numberline {2.1}Gy\IeC {\'a}rt\IeC {\'a}si feladatok \IeC {\"u}temez\IeC {\'e}se}{4}
+\select@language {magyar} \contentsline {section}{\numberline {2.2}Megold\IeC {\'o} m\IeC {\'o}dszerek}{5}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.1}MILP modellek}{5}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.2}S-gr\IeC {\'a}f}{6}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.3}Petri h\IeC {\'a}l\IeC {\'o} \IeC {\'e}s automat\IeC {\'a}k}{6}
+\select@language {magyar} \contentsline {section}{\numberline {2.3}Az egyl\IeC {\'e}p\IeC {\'e}ses \IeC {\"u}temez\IeC {\'e}s \IeC {\'a}br\IeC {\'a}zol\IeC {\'a}sa}{7}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Probl\IeC {\'e}madefin\IeC {\'\i }ci\IeC {\'o}}{8}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}Id\IeC {\H o}z\IeC {\'\i }tett automat\IeC {\'a}k}{9}
+\select@language {magyar} \contentsline {section}{\numberline {4.1}Id\IeC {\H o}z\IeC {\'\i }tett automat\IeC {\'a}k}{9}
+\select@language {magyar} \contentsline {section}{\numberline {4.2}UPPAAL Cora}{10}
+\select@language {magyar} \contentsline {chapter}{\numberline {5}Egyl\IeC {\'e}p\IeC {\'e}ses feladat LPTA modellje}{12}
+\select@language {magyar} \contentsline {section}{\numberline {5.1}Le\IeC {\'\i }r\IeC {\'a}s}{12}
+\select@language {magyar} \contentsline {section}{\numberline {5.2}Sablonok}{12}
+\select@language {magyar} \contentsline {section}{\numberline {5.3}Lek\IeC {\'e}rdez\IeC {\'e}sek}{12}
+\select@language {magyar} \contentsline {chapter}{\numberline {6}Teszteredm\IeC {\'e}nyek, \IeC {\"o}sszehasonl\IeC {\'\i }t\IeC {\'a}s}{13}
+\select@language {magyar} \contentsline {chapter}{\numberline {A}Jelolesek}{16}
