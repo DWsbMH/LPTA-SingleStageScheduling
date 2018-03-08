@@ -15,4 +15,6 @@
 \select@language {magyar} \contentsline {section}{\numberline {5.2}Template-ek \IeC {\'e}s deklar\IeC {\'a}ci\IeC {\'o}}{13}
 \select@language {magyar} \contentsline {section}{\numberline {5.3}Lek\IeC {\'e}rdez\IeC {\'e}sek}{15}
 \select@language {magyar} \contentsline {chapter}{\numberline {6}Teszteredm\IeC {\'e}nyek, \IeC {\"o}sszehasonl\IeC {\'\i }t\IeC {\'a}s}{17}
+\select@language {magyar} \contentsline {chapter}{\numberline {7}\IeC {\"O}sszefoglal\IeC {\'a}s \IeC {\'e}s j\IeC {\"o}b\IeC {\H o}beli tervek}{19}
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\IeC {\'e}k}{20}
 \select@language {magyar} \contentsline {chapter}{\numberline {A}Jelolesek}{21}

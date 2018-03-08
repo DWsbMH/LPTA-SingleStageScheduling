@@ -73,7 +73,7 @@ A Petri hálót és az automatát is gyakran alkalmazzák diszkrét esemény ren
 Az időzített Petri háló alapja, hogy az átviteli jel késleltetés (delay) alapján jön létre. Többen is foglalkoztak a témával, Ghaeli foglalkozott a kötegelt folyamatok ütemezésével ilyen módon, Soares pedig megpróbálta kiterjeszteni a modellt, és valós idejű ütemezést mutatott be kötegelt rendszerekre Petri háló segítségével. 
 
 \section{Az egylépéses ütemezés ábrázolása}
-Az egylépéses ütemezési problémákat általában táblázat segítségével adják meg, ahol a sorokban tüntetik fel a munkákat, az oszlopokban pedig a rendelkezésre álló berendezéseket, a táblázatbeli metszéspontjaik ábrázolják az egyes munkák megfelelő berendezéseken való elvégzésének munkaidejét. Kopanos részletesen foglalkozott egylépéses ütemezéssel. \\
+Az egylépéses ütemezési problémákat általában táblázat segítségével adják meg, ahol a sorokban tüntetik fel a munkákat, az oszlopokban pedig a rendelkezésre álló berendezéseket, a táblázatbeli metszéspontjaik ábrázolják az egyes munkák megfelelő berendezéseken való elvégzésének munkaidejét. Kopanos részletesen foglalkozott egylépéses ütemezéssel.\cite{Kopanos2009} \\
 \begin{figure}[h]
 \begin{center}
 \includegraphics{tablazat1}\\
@@ -204,15 +204,13 @@ Mivel az modellt 10 percen belül nem tudta lefuttatni az UPPAAL, az irodalmi p�
 
 Az eredmények alapján megállapítható, hogy korlátozás nélkül a 20 munka közül csak 5 munkával futott le az ütemezés tíz percen belül, a hatodik munka hozzáadása után tíz perc alatt nem kaptunk eredményt. Emiatt a további bővítést már nem végeztük el, beláthatóan egyiknek sem lett volna eredménye belátható időn belül.
 
+\chapter{Összefoglalás és jöbőbeli tervek}
 
 
-
-
-\chapter*{Hivatkozasok}
-\begin{thebibliography}{99}
-\bibitem Kopanos, G.M., Lainez, J.M., Puigjaner, L.: An Efficient Mixed-Integer LinearProgramming Scheduling Framework for Addressing Sequence-Dependent Setup Issues in Batch Plants. Industrial and Engineering Chemistry Research 48(13), 6346, 6357 (2009)
-\bibitem Hegyháti Máté: Batch Process Scheduling: Extensions of the S-graph Framework. Doctoral School of Information Science and Technology University of Pannonia, (2015)
-\end{thebibliography}
+\clearpage
+\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+\bibliographystyle{plain}
+\bibliography{hivatkozasok}
 
 \appendix
 
