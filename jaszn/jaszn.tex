@@ -4,7 +4,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{t1enc}
 \usepackage{graphicx}
-\graphicspath{ {Pictures/} }
+\usepackage{multirow}
+\usepackage{lscape}
 
 \begin{document}
 \title{Egylépéses gyártási feladatok költség optimális ütemezése időzített automatával}
@@ -73,16 +74,16 @@ A Petri hálót és az automatát is gyakran alkalmazzák diszkrét esemény ren
 Az időzített Petri háló alapja, hogy az átviteli jel késleltetés (delay) alapján jön létre. Többen is foglalkoztak a témával, Ghaeli foglalkozott a kötegelt folyamatok ütemezésével ilyen módon, Soares pedig megpróbálta kiterjeszteni a modellt, és valós idejű ütemezést mutatott be kötegelt rendszerekre Petri háló segítségével. 
 
 \section{Az egylépéses ütemezés ábrázolása}
-Az egylépéses ütemezési problémákat általában táblázat segítségével adják meg, ahol a sorokban tüntetik fel a munkákat, az oszlopokban pedig a rendelkezésre álló berendezéseket, a táblázatbeli metszéspontjaik ábrázolják az egyes munkák megfelelő berendezéseken való elvégzésének munkaidejét. Kopanos részletesen foglalkozott egylépéses ütemezéssel.\cite{Kopanos2009} \\
+Az egylépéses ütemezési problémákat általában táblázat segítségével adják meg, ahol a sorokban tüntetik fel a munkákat, az oszlopokban pedig a rendelkezésre álló berendezéseket, a táblázatbeli metszéspontjaik ábrázolják az egyes munkák megfelelő berendezéseken való elvégzésének munkaidejét. Kopanos részletesen foglalkozott egylépéses ütemezéssel.
+{Kopanos2009} \\
 \begin{figure}[h]
 \begin{center}
-\includegraphics{tablazat1}\\
-\caption{Példa egylépéses ütemezési feladat megadására.}
+\includegraphics{gantt}\\
+\caption{Példa egylépéses ütemezési feladat ábrázolására Gantt diagramon}
 \end{center}
 \end{figure}
-
-A fenti ábra példa egy ütemezési feladat táblázattal való megadására, ahol a feldolgozási idő mutatja a P-vel jelölt termékek egyes gépeken való munkaidejét, a gépek u-val jelöltek. Néhány feladatot nem tud minden gép végrehajtani, ezek nem rendelkeznek feldolgozási idővel az adott gépen. \\
-Minden feladathoz fel van tüntetve a hozzá tartozó határidő, valamint a gépek beállási ideje, amely a bekapcsolás után szükséges időt mutatja, amíg a gép nem tudja elkezdeni a munkát. 
+Az ütemezési feladatok megoldását Gantt diagramon ábrázolják. A példa három berendezést jelöl az y tengelyen (E1, E2, E3), az x tengelyen pedig az eltelt idő látható percben megadva. A diagram azt mutatja be, hogy egyes berendezések mikor végezték el a feladatokat, amelyek A-val, B-vel és C-vel vannak jelölve. A Gantt diagramról leolvasható, hogy melyik munka mikor kezdődött, és mikor fejeződött be, ebből adódóan pedig megállapítható, hogy milyen hosszú ideig tartott. 
+ 
 
 \chapter{Időzített automaták}
 
@@ -128,7 +129,7 @@ Az irányított élek mutatják, hogy melyik állapotból melyikbe van lehetős�
 Az automata template-ek az Editor menüpont alatt helyezkednek el, és itt található még a Declarations menüpont is. 
 \begin{figure}
 \begin{center}
-\includegraphics[width=10cm]{uppaal}
+\includegraphics[width=10cm]{uppaal2}
  \caption{Az UPPAAL Cora Editor ablaka}
 \end{center}
 \end{figure}
@@ -158,11 +159,16 @@ A feladatban munkákat és gépeket különböztetünk meg, amelyeket később P
   
 
 \chapter{Egylépéses feladat LPTA modellje}
-    \section{Leírás}
     Az LPTA modell két template-ből, a rendszer deklarációkból és a változó deklarációkból áll. A template-ek egy-egy automatát írnak le, valamint saját változókkal is rendelkeznek, ezeket később részletesen be fogjuk mutatni. Ebben a példában a két sablon a gépeket és a feladatokat modellezi.\\
     A következő fejezetekben részletesen bemutatjuk a két template-et, a lekérdezéseket és a definiált paramétereket.
-    \section{Template-ek és deklaráció}
-    A modellben két különböző template-tel dolgozunk, ezek a Gép és Feladatok elnevezésű sémák. Mivel az ütemezést három különböző változatra bontottuk, itt az első modell kerül bemutatásra, amely nem tartalmaz korlátozásokat az ütemezési folyamat gyorsításának szempontjából.\\\\
+    \section{Első modell}
+    \subsection{Deklaráció}
+     A template-ek meghatározásához a deklarációban adtuk meg a szükséges paramétereket, illetve függvényeket, amelyek szükségesek az automaták ütemezésének futtatásához. Meghatároztuk a gépek és a feladatok számát, ami az irodalmi példa szerint négy gépet és huszonöt feladatot jelent, majd ezeknek kiosztottunk egy saját azonosítót. Szintén a globális deklarációban definiáltuk a munkaidőket gépek szerint, hiszen minden gép más-más idő alatt tud elvégezni egy feladatot. Ugyanígy megadtuk a határidőket, átállási időt, a beállási időt és a csatornákat is.\\
+     A modell három csatornát tartalmaz, amelyek a \emph{foglal, elenged} és \emph{kezdődik} elnevezésűeket, ezek mindegyike annak a gépnek a sorszámát kapja meg paraméterben, amelyiken a feladat végrehajtódik.\\ 
+      Deklaráltuk a globális órát, amely az ütemezés kezdetétől méri az összes időt, amíg az utolsó lépést el nem végzi, ezen kívül a \emph{feladat} és a \emph{gép} template rendelkezik külön órával. A feladat sablon a munkaidővel és a határidővel hangolja össze a saját óráját, a gép pedig a saját beállási idejét méri vele. 
+    \subsection{Template-ek}
+    A modellben két különböző template-tel dolgozunk, ezek a Gép és Feladatok elnevezésű sémák. Mivel az ütemezést három különböző változatra bontottuk, itt az első modell kerül bemutatásra, amely nem tartalmaz korlátozásokat az ütemezési folyamat gyorsításának szempontjából.\\
+    \subsubsection*{Gép template}
     Az Gép elnevezésű template azt a minta gépet modellezi, amelyen a feladatokat el kell végezni. Három fő állapota van, ezek a kikapcsolt, bekapcsolt és a dolgozik. Kikapcsolt állapotból indul, és akkor kerül át bekapcsoltba, ha letelt az adott gépnek szükséges beállási idő, ezután kezdhet el dolgozni.  Ha a berendezés már bekapcsolt állapotban van, egy feladat befoglalhatja, ezt a \emph{foglal} csatorna szinkronizálja, és eltárolja, hogy melyik gép foglalt. Mielőtt \emph{Dolgozik} állapotba jutna, meg kell vizsgálnia, hogy az azon a gépen ez lesz-e az első elvégzett munka, mivel két munka elvégzése között átállási időt számol fel. Ha előtte nem dolgozott, akkor átállási idő nincs, a berendezés átvált \emph{Dolgozik} állapotba a \emph{kezdődik} csatorna segítségébel. Ellenben ha egy másik munka már megelőzte a jelenlegi munkát, az eltárolt aktuális és előző feladat azonosítója alapján ki kell várnia a hozzájuk tartozó átállási időt, és csak azután kezdheti meg a munkát. \\
     A \emph{foglal} csatorna közben szinkronizálja a gépet a feladat modelljével, a munkaidő letelte után pedig mindkét automata az \emph{elenged} csatorna segítségével jut a következő állapotba, ami a gép esetében a bekapcsolt állapot, ekkor vár az újabb feladat érkezéséig. Itt váltja át az előző munka azonosítóját, hiszen az elvégzett munka a következő lefutás során már az előző munkának fog számítani. 
     \begin{figure}[htpb]
@@ -170,9 +176,10 @@ A feladatban munkákat és gépeket különböztetünk meg, amelyeket később P
    \includegraphics[width=12cm]{gep}\\
     \caption{A gép automatájának modellje}
     \end{center}
-    \end{figure}\\\\\\
+    \end{figure}\\
+    \subsubsection*{Feladat template}
     A másik template a \emph{Feladatok}at mutatja be.\\
-    Ez a modell öt állapotot tartalmaz, ebben az esetben a feladat a \emph{Start} stádiumból indul, ekkor a munka arra vár, hogy befoglalhasson egy gépet. Amikor ez megtörténik, átlép a \emph{Gép befoglalásra vár} elnevezésű állapotba, előtte viszont a \emph{foglal} csatorna segítségével szinkronizálja a saját státuszát a befoglalt gép státuszával, valamint elmenti, hogy aktuálisan hányas azonosító számmal rendelkező munka kerül elvégzésre ami fontos a munkaidő szempontjából, hiszem a saját magához tartozó munkaidőt kell felszámolni a gépen, és a gépnek is tudnia kell, hogy a korábban említett beállási időt meg tudja állapítani. \\
+    Ez a modell öt állapotot tartalmaz, ebben az esetben a feladat a \emph{Start} stádiumból indul, ekkor a munka arra vár, hogy befoglalhasson egy gépet. Amikor ez megtörténik, átlép a \emph{Gép befoglalásra vár} elnevezésű állapotba, előtte viszont a \emph{foglal} csatorna segítségével szinkronizálja a saját státuszát a befoglalt gép státuszával, valamint elmenti, hogy aktuálisan hányas azonosító számmal rendelkező munka kerül elvégzésre ami fontos a munkaidő szempontjából, hiszem a saját magához tartozó munkaidőt kell felszámolni a gépen, és a gépnek is tudnia kell, hogy a korábban említett beállási időt meg tudja állapítani. Ezen kívül lekorlátozzuk, hogy ne olyan gépet foglaljon le, amely nem tudja a munkát végrehajtani, ezt a munkaidők megadásánál kiugróan magas számmal különböztettük meg, egységesen 100000-rel. \\
     A \emph{Gép befoglalásra vár} állapotban arra vár, hogy a befoglalt gépet beállítsák, ekkor kezdődhet el a feladat elvégzése. Minden feladathoz tartozik egy lokális óra, amelyen a munkaidejét méri, ezt a feladat kezdete előtt lenullázzuk, hogy a példányosítás során a következő feladat munkaideje ismét nullától legyen számítva. A gép beállítása után addig tartózkodik a \emph{Dolgozik} állapotban, míg a munkaideje le nem telik, ekkor újra szinkronizálja a saját és a gép státuszát, hogy a gép felszabaduljon, a feladat pedig átkerülhessen \emph{kész} állapotba. \\
     A \emph{kész} állapot azonban még nem azt jelenti, hogy a munka elkészült, hiszen a cél az, hogy pontosan a határidő leteltekor legyen leszállítva, ezért minél hamarabb készült el, annál többet kell várakoznia. Ebben a státuszban számoljuk fel a várakozás költségeit, amelyek az idő függvényében lineárisan növekednek. \\
     Amikor elérkezik a meghatározott határidő, a munka leszállításra kerül, ez a végső \emph{leszállítva} állapot.  
@@ -183,8 +190,8 @@ A feladatban munkákat és gépeket különböztetünk meg, amelyeket később P
         \end{center}
         \end{figure}
     \\    
-    A template-ek meghatározása után a deklarációban adtuk meg a szükséges paramétereket, illetve függvényeket, amelyek szükségesek az automaták ütemezésének futtatásához. Meghatároztuk a gépek és a feladatok számát, ami az irodalmi példa szerint négy gépet és húsz feladatot jelent, majd ezeknek ki lett osztva egy saját azonosító. Szintén a globális deklarációban definiáltuk a munkaidőket gépek szerint, hiszen minden gép más-más idő alatt tud elvégezni egy feladatot. Ugyanígy megadtuk a határidőket, átállási időt, a beállási időt és a csatornákat is. Deklaráltuk a globális órát, amely a template-ektől függetlenül méri a totális időt, valamint a \emph{minTime} függvényt, ami azonban az első modellben még nem szerepel, a későbbi modellekben korlátozási céllal jelenik meg.
-    \section{Lekérdezések}
+   
+    \subsection{Lekérdezések}
     A lekérdezések segítségével adjuk meg, hogy milyen kitételt szeretnénk leellenőriztetni az ütemezés során, melyre pozitív vagy negatív válasz érkezik. A jelenlegi modellben a feltétel, amit megvizsgáltattunk az volt, hogy létezik-e olyan megoldási lehetőség, ahol minden feladat kész lesz határidőre.\\
     Hogy a lekérdezés szerkezetét leegyszerűsítsük, evezettünk a deklarációban egy változót, amelynek értéke minden esetben megegyezik a munkaszámmal. Amikor a feladat a \emph{kész} állapotból \emph{leszállítva} állapotba kerül, ezt az értéket mindig egyel csökkentjük, így optimális esetben, tehát ha minden feladat elkészül, nulla értéket vesz fel. Így a lekérdezés az alábbi módon kerül megadásra.
     \begin{center}
@@ -192,17 +199,202 @@ A feladatban munkákat és gépeket különböztetünk meg, amelyeket később P
     \end{center}
     Ez a forma egyszerűbben megadható, és kiváltja a plusz változó nélküli hosszú megadást, ahol egyesével kellene ellenőrizni, hogy az adott feladat elkészült-e.
     
-\chapter{Teszteredmények, összehasonlítás}
-A modellt először a szükséges korlátozásokon kívül egyéb korlátozásokkal nem egészítettük ki, amikkel csökkenteni lehetett volna az ütemezés futási idejét. A Query-ben megadott cél az volt, hogy olyan megoldást találjon, amikor az összes feladatot sikeresen elvégzi, tehát leszállításra kerülnek határidőre.\\
-Mivel az modellt 10 percen belül nem tudta lefuttatni az UPPAAL, az irodalmi példában szereplő 20 feladat helyett először 1 feladattal került tesztelésre az automata futási ideje, majd egyesével növeltük a feladatok számát addig, amíg a modell képes volt tíz percen belül megoldást találni rá. Az eredményeket az alábbi táblázat tartalmazza.
+\section{Továbbfejlesztett modellek}
+\subsection{Modell 2}
+A modell második változatában a \emph{gép} template harmadik állapota az előzőhöz képest \emph{committed} minősítést kapott, tehát ebben az állapotban nem történhet késleltetés, mindenképpen tovább kell haladnia a következő állapotba, ami a \emph{dolgozik} állapot, de előtte megvizsgálja, hogy volt-e előző feladat. Ha volt, akkor a beállási időt kell kivárnia, ezután mehet át a \emph{dolgozik} státuszba.\\
+A másik módosítás a \emph{feladat} template \emph{Start} állapotában történt. Itt hozzáadtunk egy korlátozást, amely megakadályozza, hogy ha kevesebb idő áll rendelkezésre a határidőig, mint az aktuális feladat munkaideje, akkor eleve nem foglalja be a gépeket. Ezzel olyan lefutási lehetőségeket zárunk ki, amelyek nem vezetnének megoldáshoz, viszont növelik a modell méretét, ezzel pedig megnövekszik az ütemezés futtatásának ideje.
+\subsection{Modell 3}
+A \emph{gép} sablon \emph{committed} és \emph{dolgozik} állapota között van egy átmeneti állapot, ahova akkor jut a gép, ha már nem az első feladaton dolgozik, ezután vizsgálja meg, hogy milyen hosszú beállási időre van szükség az előző feladatot figyelembe véve. A Modell 3-ban korlátozzuk azt az időt, amíg a gép ebben az állapotban tartózkodhat, ami ezután nem lehet több, mint az előző és az aktuális munka alapján megállapított átállási idő. \\
+Továbbá a \emph{dolgozik} állapotban sem tartózkodhat tovább, mint a feladathoz szükséges munkaidő, ezzel pedig megelőzhető, hogy a gép \emph{dolgozik} állapotban maradjon, ha a feladat a \emph{munka} státuszból nem tud átmenni a \emph{kész} állapotba, így nem is engedné el a gépen, amit korábban befoglalt. Ennek segítségével a berendezés csak addig lehet \emph{dolgozik} állapotban, amíg le nem telik a tevékenységhez szükséges idő, utána mindenképp fel kell szabadítani a gépet.\\
+A korlátozás segítségével nem maradhat elfoglalt a gép egy olyan munkával, ami meghatározott időn belül nem tud befejeződni. \\
+A \emph{feladat} template-be még három korlátozás került, a \emph{gép befoglalásra vár} státusz után akkor foglalhat be gépet, ha több idő áll rendelkezésre, mint amennyivel nem tudna befejeződni a saját határidejéig. \emph{Munka} állapotól \emph{kész állapotba} akkor válthat át, ha nem haladta meg a határidőt, ugyanígy akkor léphet tovább a \emph{kész} állapotból, ha a határidőig még van idő.
+A modell 3-ban a \emph{gép} template átállási idővel kapcsolatos korlátozása változott, itt megengedjük az egyenlőség mellett azt is, hogy az óra magasabb értéket mutasson. A \emph{feladat} sablonban hasonló módon a \emph{munká}ból a \emph{kész} állapotba akkor is átválthat, ha a saját órája értéke nem feltétlenül egyenlő a feladat munkaidejével, de nagyobb is lehet.
+\subsection{Modell 5}
+Az ötödik modell egy template-ből áll, ez pedig a feladatok automatája. Itt egy modellben kezeljük a gépekre vonatkozó adatokat, ez az automata négy állapotból áll, amelyek a \emph{Start, InProgress, Kész} és \emph{Leszállítva}. Az állapotok a modell 3-hoz hasonlóan korlátozottak.\\
 \begin{figure}[htpb]
 \begin{center}
-\includegraphics[height=4.4cm]{tablazat_2}
-\caption{Futási eredmények korlátozás nélkül.}
+\includegraphics[height=6.5 cm]{modell_5}
+\caption{A modell 5}
 \end{center}
 \end{figure}
+ A \emph{Start} státuszból akkor kerül át \emph{InProgress} állapotba, ha megfelel néhány korlátozásnak. A munkaidő értéke nem lehet -1, ez azt jelenti, hogy azon a gépen nem lehet elvégezni az adott feladatot. A beállási időnek el kell telnie, ezért az óra állása nem lehet kisebb, mint ez az érték. Ha ezek a feltételek teljesülnek, elmentjük a munka azonosítóját és a gép azonosítóját, lenullázzuk az órát. A \emph{getReserveTime} függvényt a deklaráció tartalmazza, ezzel a függvénnyel megvizsgáljuk, hogy azon a gépen az aktuális feladat lesz-e az első, és ha nem, akkor az átállási idő és a munkaidő összegét adja vissza, különben nullát. Ezt a számot a \emph{finishtime} nevű változóban tároljuk el.\\
+ A következő két állapot közti átmenet akkor történhet meg, ha letelt a finishtime-ban megállapított idő, ezután pedig a modell visszaállítja a az \emph{aktuális} változó értékét, az \emph{előző}t pedig frissíti az abban a pillanatban aktuális feladat azonosítójára, mivel a következő lefutás során ez már az előző munkának fog megfelelni. \\
+ A \emph{kész} és \emph{leszállítva} státuszok közti átmenet a korábbi modellekhez hasonlóan alakul, az óra meg kell, hogy egyezzen a határidővel, a még elvégzésre váró feladatok számát pedig csökkentjük.
 
-Az eredmények alapján megállapítható, hogy korlátozás nélkül a 20 munka közül csak 5 munkával futott le az ütemezés tíz percen belül, a hatodik munka hozzáadása után tíz perc alatt nem kaptunk eredményt. Emiatt a további bővítést már nem végeztük el, beláthatóan egyiknek sem lett volna eredménye belátható időn belül.
+\chapter{Teszteredmények, összehasonlítás}
+A tesztelés parancssori környezetben került futtatásra, ahol azt vizsgáltuk, hogy az egyes modellek hány feladatig találnak megoldást megállapított időn belül, valamint találnak-e megoldást, amennyiben az időkorláton belül végigfut az ütemezés. Ezen kívül megvizsgáltuk a költségeket minden modellre, hogy ebben a tekintetben van-e köztük különbség. 
+\section{Az irodalmi példa}
+A dolgozat során Kopanos\cite{Kopanos2009} példáját adaptáltuk.\\
+A \ref{tab:proctime} táblázat mutatja a P-vel jelölt feladatok feldolgozási idejét egyes u-val jelölt gépeken, de egy munkát nem minden gép tud elvégezni. A feladathoz tartozik határidő, a beállási idő pedig a gépek kezdeti, bekapcsoláshoz szükséges idejét mutatja.\\
+A következő \ref{tab:setup1} táblázatban az egyes feladatok közti átállási idő látható, tehát ennyi időre van szüksége a gépeknek egyik feladatról a másikra való beállításához.
+
+
+ \begin{table}[htpb]
+        \label{tab:proctime}
+        \centering
+        \setlength{\tabcolsep}{10pt}
+        \begin{tabular}{r|cccc|c}
+            \multirow{2}{*}{Feladatok} & \multicolumn{4}{ |c| }{Munkaidő (nap)} & \multirow{2}{*}{Határidő} \\
+            \cline{2-5}
+            &u1    &u2    &u3     &u4\\
+            \hline
+            P1  &1.538 &.     &.     &1.194 &15\\
+            P2  &1.500 &.     &.     &0.789 &30\\
+            P3  &1.607 &.     &.     &0.818 &22\\
+            P4  &.     &.     &1.564 &2.143 &25\\
+            P5  &.     &.     &0.736 &1.017 &20\\
+            P6  &5.263 &.     &.     &3.200 &30\\
+            P7  &4.865 &.     &3.025 &3.214 &21\\
+            P8  &.     &.     &1.500 &1.440 &26\\
+            P9  &.     &.     &1.869 &2.459 &30\\
+            P10 &.     &1.282 &.     &.     &29\\
+            P11 &.     &3.750 &.     &3.000 &30\\
+            P12 &.     &6.796 &7.000 &5.600 &21\\
+            P13 &11.25 &.     &.     &6.716 &30\\
+            P14 &2.632 &.     &.     &1.527 &25\\
+            P15 &5.000 &.     &.     &2.985 &24\\
+            P16 &1.250 &.     &.     &0.783 &30\\
+            P17 &4.474 &.     &.     &3.036 &30\\
+            P18 &.     &1.492 &.     &.     &30\\
+            P19 &.     &3.130 &.     &2.687 &13\\
+            P20 &2.424 &.     &1.074 &1.600 &19\\
+            P21 &7.317 &.     &3.614 &.     &30\\
+            P22 &.     &.     &0.864 &.     &20\\
+            P23 &.     &.     &3.624 &.     &12\\
+            P24 &.     &.     &2.667 &4.000 &30\\
+            P25 &5.952 &.     &3.448 &4.902 &17\\
+            \hline
+            Beállási idő &0.180 &0.175 &0.000 &0.237 &  \\
+        \end{tabular}
+        \caption{A feladatok munkaideje}
+    \end{table}
+    
+    \begin{landscape}
+    \begin{table}[p]
+            \label{tab:setup1}
+            \centering
+            \setlength{\tabcolsep}{5pt}
+            \begin{tabular}{r|cccccccccccccccccccc}
+                &       P1  & P2  & P3  & P4  & P5  & P6  &  P7 &   P8  &	P9	&	P10	&	P11	&	P12	&	P13	&	P14	&	P15	&	P16	&	P17	&	P18	&	P19	&	P20  \\ \hline
+                P1	&	 .  & 0.3 & 0.8 & 1.5 & 0.6 & 0.5 & 2.0 & 1.1 & 0.0 &  .  & 0.5 & 1.0 & 0.2 & 0.8 & 0.7 & 0.5 & 1.8 &  .  & 2.5 & 0.3	\\
+                P2	&	0.2 &  .  & 1.3 & 0.9 & 2.5 & 0.2 & 0.8 & 2.5 & 0.4 &  .  & 0.6 & 2.5 & 0.5 & 0.2 & 0.6 & 0.0 & 1.1 &  .  & 0.8 & 2.5	\\
+                P3	&	0.5 & 0.9 &  .  & 0.5 & 0.7 & 0.4 & 1.5 & 0.4 & 0.9 &  .  & 0.2 & 1.5 & 0.8 & 0.7 & 0.0 & 2.0 & 0.6 &  .  & 0.5 & 1.3	\\
+                P4	&	1.1 & 0.7 & 0.2 &  .  & 0.8 & 2.0 & 0.9 & 0.0 & 1.3 &  .  & 1.5 & 1.0 & 1.8 & 0.6 & 1.3 & 0.6 & 1.5 &  .  & 1.0 & 0.5	\\
+                P5	&	0.5 & 1.0 & 0.0 & 1.3 &  .  & 0.5 & 2.0 & 1.3 & 0.9 &  .  & 0.4 & 0.3 & 2.0 & 1.0 & 2.0 & 0.7 & 0.2 &  .  & 0.3 & 0.9	\\
+                P6	&	0.2 & 0.0 & 1.3 & 1.0 & 1.0 &  .  & 0.7 & 1.3 & 0.8 &  .  & 0.7 & 0.6 & 0.5 & 0.7 & 0.5 & 2.0 & 0.9 &  .  & 1.1 & 0.5	\\
+                P7	&	0.9 & 0.5 & 1.1 & 0.0 & 1.4 & 0.6 &  .  & 4.0 & 0.5 &  .  & 0.5 & 0.8 & 0.3 & 0.4 & 1.1 & 0.5 & 1.5 &  .  & 0.9 & 1.5	\\
+                P8	&	1.5 & 2.0 & 0.4 & 1.3 & 0.5 & 0.9 & 0.7 &  .  & 0.9 &  .  & 0.4 & 1.8 & 0.6 & 1.5 & 0.6 & 0.5 & 0.7 &  .  & 0.9 & 1.1	\\
+                P9	&	2.5 & 0.6 & 0.5 & 0.8 & 0.6 & 1.8 & 0.6 & 0.2 &  .  &  .  & 2.0 & 1.5 & 2.0 & 0.6 & 0.9 & 1.3 & 1.8 &  .  & 0.7 & 0.8	\\
+                P10	&	 .  &  .  &  .  &  .  &  .  &  .  &  .  &  .  &  .  &  .  & 1.0 & 1.3 &  .  &  .  &  .  &  .  &  .  & 0.0 & 0.8 &  . 	\\
+                P11	&	0.8 & 1.0 & 1.3 & 0.8 & 1.1 & 0.4 & 2.5 & 0.9 & 2.0 & 0.0 &  .  & 0.8 & 1.0 & 2.5 & 1.5 & 0.6 & 0.8 & 2.5 & 1.3 & 0.6	\\
+                P12	&	0.2 & 0.7 & 0.6 & 0.3 & 0.9 & 0.3 & 0.5 & 0.2 & 0.4 & 0.4 & 0.2 &  .  & 2.0 & 1.1 & 0.9 & 0.2 & 2.0 &  .  & 0.6 & 0.5	\\
+                P13	&	0.9 & 0.8 & 1.3 & 1.1 & 1.3 & 0.6 & 0.4 & 1.5 & 0.5 &  .  & 0.4 & 1.8 &  .  & 0.0 & 1.8 & 0.8 & 0.6 &  .  & 2.5 & 1.0	\\
+                P14	&	1.8 & 1.5 & 2.0 & 1.5 & 0.4 & 2.5 & 0.5 & 0.5 & 1.1 &  .  & 0.6 & 1.5 & 0.8 &  .  & 0.5 & 0.5 & 0.0 &  .  & 1.1 & 1.5	\\
+                P15	&	1.5 & 0.9 & 1.3 & 0.9 & 0.6 & 0.1 & 0.2 & 1.1 & 0.3 &  .  & 1.3 & 0.5 & 0.4 & 0.6 &  .  & 1.3 & 1.0 &  .  & 1.3 & 1.0	\\
+                P16	&	1.3 & 2.0 & 1.5 & 0.5 & 0.4 & 0.9 & 1.8 & 0.6 & 0.7 &  .  & 1.5 & 2.0 & 0.6 & 0.4 & 0.8 &  .  & 0.9 &  .  & 0.5 & 0.2	\\
+                P17	&	0.7 & 0.7 & 0.9 & 0.8 & 1.4 & 0.6 & 0.8 & 1.0 & 0.6 &  .  & 0.9 & 0.4 & 0.5 & 0.9 & 2.0 & 1.3 &  .  &  .  & 0.7 & 1.1	\\
+                P18	&	 .  &  .  &  .  &  .  &  .  &  .  &  .  &  .  &  .  & 0.0 & 0.8 & 1.3 &  .  &  .  &  .  &  .  &  .  &  .  & 1.3 &  . 	\\
+                P19	&	0.6 & 0.5 & 1.1 & 0.5 & 0.4 & 1.4 & 0.9 & 0.4 & 0.6 & 0.4 & 2.5 & 0.0 & 0.7 & 0.7 & 0.5 & 1.3 & 0.7 & 0.2 &  .  & 2.0	\\
+                P20	&	0.7 & 0.5 & 2.0 & 1.4 & 0.0 & 1.1 & 0.5 & 0.6 & 1.4 & 2.0 & 0.4 & 0.9 & 2.0 & 0.8 & 0.7 & 0.3 & 0.5 &  .  & 0.8 &  . 	\\
+            \end{tabular}
+            \caption{Beállítási idők P feladatok között}
+        \end{table}
+        \end{landscape}
+        
+   \section{A tesztelés módja és környezete}
+   A tesztesetek futtatását egy Acer Aspire V3-571 laptopon futtattam, amelyen Windows 7 Professional operációs rendszer fut. A processzor Intel Core i3 3120M 2,50 Hz típusú, a gép 4 GB RAM-mal rendelkezik. \\
+   Az UPPAAL Cora szoftver, amelyen az automatákat modelleztük a 2006-os 4.0.2 verzió.\\
+   Minden tesztesetet háromszor futtattunk le, hogy még pontosabb eredményt kapjunk az ütemezés elvégzésének gyorsaságáról. Ezeket addig végeztük, amíg az egyes esetek futásának ideje el nem érte az egy perces időkorlátot. Amennyiben minden alkalommal sikeresen megkaptuk az eredményt, a három érték átlagát tekintettük érvényesnek, később ezt vettük figyelembe.
+   \section{Első teszteset}
+   \begin{table}[htpb]
+   \centering
+   \setlength{\tabcolsep}{4pt}
+	\begin{tabular}{r|cccccc}
+	   Munkaszám & Modell 1 & Modell 2 & Modell 3 & Modell 3v & Modell 5 & Költség \\ 
+	   \hline 
+	   1 & 0,073 & 0,076 & 0,06 & 0,056 & 0,053 & 0 \\ 
+	   
+	   2 & 0,086 & 0,083 & 0,056 & 0,06 & 0,06 & 0 \\ 
+	   
+	   3 & 0,116 & 0,011 & 0,073 & 0,073 & 0,07 & 0 \\ 
+	   
+	   4 & 0,23 & 0,43 & 0,18 & 0,23 & 0,083 & 0 \\ 
+	  
+	   5 & 0,69 & \emph{4,48} & 1,94 & 1,63 & 0,12 & 0 \\ 
+	
+	   6 & 13,3 & - & 16,33 & 13,8 & 0,15 & 0 \\ 
+	   
+	   7 & >1 min &  & >1 min & >1 min & 0,92 & 0 \\ 
+	   
+	   8 &  &  &  &  & 3,41 & 0 \\ 
+	   
+	   9 &  &  &  &  & 6,33 & 0 \\ 
+	   
+	   10 &  &  &  &  & >1 min & 0 \\ 
+	  
+	   \end{tabular} 
+	   \label{tab:elsotablazat}
+	    \caption{Első teszteset}
+   \end{table}
+   
+   A \ref{tab:elsotablazat} táblázat mutatja be azokat az eredményeket, amelyeket a modellek lefuttatása után kaptunk három érték átlagából. A mennyiségek másodpercben vannak megadva, és az egyes változatokat addig futtattuk, amíg egy percen belül végigért az ütemezéssel.\\
+   A költségek jellemzően nem változtak, egy kivétellel mindig 0 volt az eredmény. Az egy kivétel a Modell 2 esetében jelentkezett, ahol 5 munkára 12,388 költséggel talált megoldást.\\
+   Amint az eredmények alapján megállapítható, nem minden esetben jelenti azt a modell továbbfejlesztése, hogy több munkát tudunk vele egy perc alatt elvégeztetni, vagy hogy a kisebb mennyiségű munkákat gyorsabban végzi el. A Modell 1 és a Modell 3v ugyanúgy 6 munkát képes elvégezni a meghatározott időkorláton belül, a Modell 3v néhány esetben lassabbnak is bizonyult.\\
+   A Modell 3 és a 3v annyiban különbözik egymástól, hogy a korábban Modell 3-nál a meghatározott frissítések közül at átállási idő, a határidő és munkaidő időbeli korlátozásánál szereplő engedmény csak a \emph{3v} modellben szerepel. A két változattal elért teszteredmények alapján nagyobb számú munkára a 3v modell ad gyorsabban eredményt, viszont egyformán hat feladattal történő ütemezés fér bele egy percbe.\\
+   A Modell 2 öt feladatra jelentősen hosszabb idő alatt talált megoldást, hatra pedig már egyáltalán nem. Itt azt az eredményt kaptuk, hogy nincs feasible eredmény. Kisebb számú munkára hasonló időeredmények jöttek ki, mint a Modell 1-nél, így megállapíthatjuk, hogy a Modell 2 korlátozásai nem adtak hozzá a teljesítményéhez. \\
+   A Modell 5 ért el kiemelkedően jobb teljesítményt, itt a kilenc feladattal történő ütemezés befejeződött valamivel több, mint hat másodperc alatt, viszont tíz munkával már nem fért bele egy percbe.\\
+   Összességében megállapítható, hogy a fokozatosan hozzátett korlátozások nem javították számottevően a számítási teljesítményt, sőt néhány esetben azzal, hogy az automata szerkezete bonyolultabbá vált, több erőforrást vett igénybe az ütemezés, így nem javultak az eredmények, néhány helyen inkább pár másodpercet romlottak. A korlátozások beépítésének célja az lett volna, hogy a keresési fának olyan ágait eleve kizárjuk vele, amelyek előrelátható módon nem vezettek volna jó megoldáshoz, deadlock-ba ért volna az ütemezés. A korlátozások másik célja az volt, hogy ha ugyanabba az állapotba több átmenettel el lehet jutni, de különböző sorrendben, akkor a modell ne járja végig az össze útvonalat, ezeket egyszer elég megvizsgálni. Tovább korlátozható a modell az állapotok \emph{committed} és \emph{urgent} beállításaival, amik nem engednek késleltetést a megjelölt állapotban.\\ 
+   A Modell 5 azért lehetett számottevően gyorsabb, mert egy automata az alapja, és nem kell csatornák segítségével paralell composition-t létrehozni. 
+   \section{Kapcsolók}
+   A parancssori futtatás során lehetőség van különböző kapcsolók megadására.\\ 
+   Az UPPAAL Cora parancssori következő parancssori paramétereit használtuk: \emph{E, C, n, o, S}, ezek segítségével futtattuk le a második teszteset során a modelleket, hogy megvizsgáljuk, a jól megválasztott kapcsolókkal lehet-e időt spórolni. A gyorsabb lefutás szükséges ahhoz, hogy minél több feladattal elvégezhető legyen az ütemezés.\\
+   A kapcsolók funkciói:\\
+   \begin{itemize}
+   \item \textbf{-E}: Nem írja ki a részletes eredményt a kimenetre, csak a főbb eredményeket, jelen esetben azt, hogy talált-e feasible megoldást és a költségeket.
+   \item \textbf{-C}: Lecsökkenti a memóriafelhasználást, főleg olyan modelleknél, ami több órát is tartalmaz. Gyorsítási céllal használható.
+   \item \textbf{n}: Kiválasztja az extrapolációs operátort, ebben az esetben lehet automatikus, exrapoláció nélküli, különbség alapú vagy location alapú.
+   \item \textbf{o}: Kiválasztja a keresés irányát, amely lehet szélességi, mélységi, optimális, random mélységi, random optimális és heurisztikus.
+   \item \textbf{S}: Optimalizálja a helyigényt. Három fokozata van, kikapcsolt, alapértelmezett és a leghatékonyabb.
+   \end{itemize}
+   Az ütemezés során minden modellt lefuttattunk minden kapcsolókombinációval, ezután megvizsgáltuk, hogy melyik modell melyik kombinációval adja az optimális megoldást. Az eredményeket az alábbi táblázat tartalmazza.\\
+   \begin{table}[htpb]
+   \label{tab:kapcsolo}
+              \centering
+              \setlength{\tabcolsep}{1pt}
+    	\begin{tabular}{c|c|c|c|c|c}
+    	
+    	Munkaszám & Modell 1 & Modell 2 & Modell 3 & Modell 3v & Modell 5 \\ 
+    	
+    	 & -E-n1-o3-S1 & -C-E-n3-o3-S0 & -C-E-n0-o3-S2 & -C-E-n2-o3-S0 & -C-E-n0-o2-S0 \\ 
+    	\hline 
+    	1 & 0,073 & 0,076 & 0,073 & 0,073 & 0,07 \\ 
+     
+    	2 & 0,083 & 0,08 & 0,08 & 0,083 & 0,076 \\ 
+     
+    	3 & 0,1 & 0,14 & 0,1 & 0,093 & 0,076 \\ 
+    
+    	4 & 0,29 & 0,36 & 0,21 & 0,15 & 0,086 \\ 
+    
+    	5 & 0,89 & 3,63 & 0,92 & 0,59 & 0,11 \\ 
+    
+    	6 & 14,37 & > 1 min & 4,01 & 4,26 & 0,16 \\ 
+    
+    	7 & > 1 min &  & 24,61 & 25,24 & 0,35 \\ 
+    
+    	8 &  &  & > 1 min & > 1 min & 1,7 \\ 
+    
+    	9 &  &  &  &  & 2,42 \\ 
+    
+    	10 &  &  &  &  & 30,14 \\ 
+    	11 &  &  &  &  & > 1 min \\ 
+    	\end{tabular} 
+    	\caption{A modellek futtatása kapcsolókkal}
+   \end{table}
+    A  \ref{tab:kapcsolo} táblázatban látható, hogy melyik kapcsolókkal futott le leggyorsabban az adott modell ütemezése. A költség mindenhol 0 maradt, kivéve a Modell 2-ben, ahol a három és négy munkával történő lefutás 8,194 költséggel történt meg, míg az öt feladatos modellben ez az érték 14,388.\\
+    A kapcsolókkal való kiegészítés után is az ötödik modell bizonyult a leggyorsabbnak, ami így már 10 feladat ütemezésére képes egy percen belül a korábbi 9-hez képest. Változás történt a  Modell 3-ban és a Modell 3v-ben is, ezek 6 feladat helyett 7-et tudnak ütemezni egy percen belül.
+   
+   
+   
 
 \chapter{Összefoglalás és jöbőbeli tervek}
 
