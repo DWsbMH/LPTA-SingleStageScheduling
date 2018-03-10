@@ -1,0 +1,153 @@
+		
+model_5      -E  -n0   -o0   -S0   		Command exited with non-zero status 124 179.54	
+model_5      -E  -n0   -o0   -S1   		Command exited with non-zero status 124 179.49	
+model_5      -E  -n0   -o0   -S2   		Command exited with non-zero status 124 179.78	
+model_5      -E  -n0   -o1   -S0   		Command exited with non-zero status 124 179.87	
+model_5      -E  -n0   -o1   -S1   		Command exited with non-zero status 124 179.89	
+model_5      -E  -n0   -o1   -S2   		Command exited with non-zero status 124 179.82	
+model_5      -E  -n0   -o2   -S0   		Command exited with non-zero status 124 179.87	
+model_5      -E  -n0   -o2   -S1   		Command exited with non-zero status 124 179.93	
+model_5      -E  -n0   -o2   -S2   		Command exited with non-zero status 124 179.82	
+model_5      -E  -n0   -o3   -S0   		Command exited with non-zero status 124 179.58	
+model_5      -E  -n0   -o3   -S1   		Command exited with non-zero status 124 179.62	
+model_5      -E  -n0   -o3   -S2   		Command exited with non-zero status 124 179.65	
+model_5      -E  -n0   -o4   -S0   		Command exited with non-zero status 124 179.89	
+model_5      -E  -n0   -o4   -S1   		Command exited with non-zero status 124 179.91	
+model_5      -E  -n0   -o4   -S2   		Command exited with non-zero status 124 179.83	
+model_5      -E  -n1   -o0   -S0   		Command exited with non-zero status 124 179.71	
+model_5      -E  -n1   -o0   -S1   		Command exited with non-zero status 124 179.75	
+model_5      -E  -n1   -o0   -S2   		Command exited with non-zero status 124 179.76	
+model_5      -E  -n1   -o1   -S0   		Command exited with non-zero status 124 179.90	
+model_5      -E  -n1   -o1   -S1   		Command exited with non-zero status 124 179.85	
+model_5      -E  -n1   -o1   -S2   		Command exited with non-zero status 124 179.78	
+model_5      -E  -n1   -o2   -S0   		Command exited with non-zero status 124 179.83	
+model_5      -E  -n1   -o2   -S1   		Command exited with non-zero status 124 179.93	
+model_5      -E  -n1   -o2   -S2   		Command exited with non-zero status 124 179.88	
+model_5      -E  -n1   -o3   -S0   		Command exited with non-zero status 124 179.55	
+model_5      -E  -n1   -o3   -S1   		Command exited with non-zero status 124 179.56	
+model_5      -E  -n1   -o3   -S2   		Command exited with non-zero status 124 179.67	
+model_5      -E  -n1   -o4   -S0   		Command exited with non-zero status 124 179.91	
+model_5      -E  -n1   -o4   -S1   		Command exited with non-zero status 124 179.85	
+model_5      -E  -n1   -o4   -S2   		Command exited with non-zero status 124 179.85	
+model_5      -E  -n2   -o0   -S0   		Command exited with non-zero status 124 179.70	
+model_5      -E  -n2   -o0   -S1   		Command exited with non-zero status 124 179.76	
+model_5      -E  -n2   -o0   -S2   		Command exited with non-zero status 124 179.76	
+model_5      -E  -n2   -o1   -S0   		Command exited with non-zero status 124 179.90	
+model_5      -E  -n2   -o1   -S1   		Command exited with non-zero status 124 179.87	
+model_5      -E  -n2   -o1   -S2   		Command exited with non-zero status 124 179.82	
+model_5      -E  -n2   -o2   -S0   		Command exited with non-zero status 124 179.91	
+model_5      -E  -n2   -o2   -S1   		Command exited with non-zero status 124 179.89	
+model_5      -E  -n2   -o2   -S2   		Command exited with non-zero status 124 179.81	
+model_5      -E  -n2   -o3   -S0   		Command exited with non-zero status 124 179.54	
+model_5      -E  -n2   -o3   -S1   		Command exited with non-zero status 124 179.51	
+model_5      -E  -n2   -o3   -S2   		Command exited with non-zero status 124 179.63	
+model_5      -E  -n2   -o4   -S0   		Command exited with non-zero status 124 179.90	
+model_5      -E  -n2   -o4   -S1   		Command exited with non-zero status 124 179.90	
+model_5      -E  -n2   -o4   -S2   		Command exited with non-zero status 124 179.81	
+model_5      -E  -n3   -o0   -S0   		Command exited with non-zero status 124 179.64	
+model_5      -E  -n3   -o0   -S1   		Command exited with non-zero status 124 179.75	
+model_5      -E  -n3   -o0   -S2   		Command exited with non-zero status 124 179.79	
+model_5      -E  -n3   -o1   -S0   		Command exited with non-zero status 124 179.92	
+model_5      -E  -n3   -o1   -S1   		Command exited with non-zero status 124 179.90	
+model_5      -E  -n3   -o1   -S2   		Command exited with non-zero status 124 179.85	
+model_5      -E  -n3   -o2   -S0   		Command exited with non-zero status 124 179.91	
+model_5      -E  -n3   -o2   -S1   		Command exited with non-zero status 124 179.89	
+model_5      -E  -n3   -o2   -S2   		Command exited with non-zero status 124 179.82	
+model_5      -E  -n3   -o3   -S0   		Command exited with non-zero status 124 179.60	
+model_5      -E  -n3   -o3   -S1   		Command exited with non-zero status 124 179.54	
+model_5      -E  -n3   -o3   -S2   		Command exited with non-zero status 124 179.44	
+model_5      -E  -n3   -o4   -S0   		Command exited with non-zero status 124 179.89	
+model_5      -E  -n3   -o4   -S1   		Command exited with non-zero status 124 179.87	
+model_5      -E  -n3   -o4   -S2   		Command exited with non-zero status 124 179.80	
+model_5      -E  -n4   -o0   -S0   		Command exited with non-zero status 124 179.66	
+model_5      -E  -n4   -o0   -S1   		Command exited with non-zero status 124 179.68	
+model_5      -E  -n4   -o0   -S2   		Command exited with non-zero status 124 179.70	
+model_5      -E  -n4   -o1   -S0   		Command exited with non-zero status 124 179.83	
+model_5      -E  -n4   -o1   -S1   		Command exited with non-zero status 124 179.88	
+model_5      -E  -n4   -o1   -S2   		Command exited with non-zero status 124 179.78	
+model_5      -E  -n4   -o2   -S0   		Command exited with non-zero status 124 179.82	
+model_5      -E  -n4   -o2   -S1   		Command exited with non-zero status 124 179.75	
+model_5      -E  -n4   -o2   -S2   		Command exited with non-zero status 124 179.81	
+model_5      -E  -n4   -o3   -S0   		Command exited with non-zero status 124 179.56	
+model_5      -E  -n4   -o3   -S1   		Command exited with non-zero status 124 179.54	
+model_5      -E  -n4   -o3   -S2   		Command exited with non-zero status 124 179.57	
+model_5      -E  -n4   -o4   -S0   		Command exited with non-zero status 124 179.85	
+model_5      -E  -n4   -o4   -S1   		Command exited with non-zero status 124 179.85	
+model_5      -E  -n4   -o4   -S2   		Command exited with non-zero status 124 179.81	
+model_5   -C  -E  -n0   -o0   -S0   		Command exited with non-zero status 124 179.22	
+model_5   -C  -E  -n0   -o0   -S1   		Command exited with non-zero status 124 178.77	
+model_5   -C  -E  -n0   -o0   -S2   		Command exited with non-zero status 124 179.60	
+model_5   -C  -E  -n0   -o1   -S0   		Command exited with non-zero status 124 179.80	
+model_5   -C  -E  -n0   -o1   -S1   		Command exited with non-zero status 124 179.80	
+model_5   -C  -E  -n0   -o1   -S2   		Command exited with non-zero status 124 179.79	
+model_5   -C  -E  -n0   -o2   -S0   		Command exited with non-zero status 124 179.68	
+model_5   -C  -E  -n0   -o2   -S1   		Command exited with non-zero status 124 179.73	
+model_5   -C  -E  -n0   -o2   -S2   		Command exited with non-zero status 124 179.74	
+model_5   -C  -E  -n0   -o3   -S0   		Command exited with non-zero status 124 179.17	
+model_5   -C  -E  -n0   -o3   -S1   		Command exited with non-zero status 124 179.04	
+model_5   -C  -E  -n0   -o3   -S2   		Command exited with non-zero status 124 179.22	
+model_5   -C  -E  -n0   -o4   -S0   		Command exited with non-zero status 124 179.77	
+model_5   -C  -E  -n0   -o4   -S1   		Command exited with non-zero status 124 179.74	
+model_5   -C  -E  -n0   -o4   -S2   		Command exited with non-zero status 124 179.73	
+model_5   -C  -E  -n1   -o0   -S0   		Command exited with non-zero status 124 179.28	
+model_5   -C  -E  -n1   -o0   -S1   		Command exited with non-zero status 124 179.21	
+model_5   -C  -E  -n1   -o0   -S2   		Command exited with non-zero status 124 179.59	
+model_5   -C  -E  -n1   -o1   -S0   		Command exited with non-zero status 124 179.76	
+model_5   -C  -E  -n1   -o1   -S1   		Command exited with non-zero status 124 179.80	
+model_5   -C  -E  -n1   -o1   -S2   		Command exited with non-zero status 124 179.79	
+model_5   -C  -E  -n1   -o2   -S0   		Command exited with non-zero status 124 179.71	
+model_5   -C  -E  -n1   -o2   -S1   		Command exited with non-zero status 124 179.73	
+model_5   -C  -E  -n1   -o2   -S2   		Command exited with non-zero status 124 179.79	
+model_5   -C  -E  -n1   -o3   -S0   		Command exited with non-zero status 124 179.06	
+model_5   -C  -E  -n1   -o3   -S1   		Command exited with non-zero status 124 179.11	
+model_5   -C  -E  -n1   -o3   -S2   		Command exited with non-zero status 124 179.28	
+model_5   -C  -E  -n1   -o4   -S0   		Command exited with non-zero status 124 179.75	
+model_5   -C  -E  -n1   -o4   -S1   		Command exited with non-zero status 124 179.60	
+model_5   -C  -E  -n1   -o4   -S2   		Command exited with non-zero status 124 179.82	
+model_5   -C  -E  -n2   -o0   -S0   		Command exited with non-zero status 124 179.22	
+model_5   -C  -E  -n2   -o0   -S1   		Command exited with non-zero status 124 179.25	
+model_5   -C  -E  -n2   -o0   -S2   		Command exited with non-zero status 124 179.57	
+model_5   -C  -E  -n2   -o1   -S0   		Command exited with non-zero status 124 179.73	
+model_5   -C  -E  -n2   -o1   -S1   		Command exited with non-zero status 124 179.80	
+model_5   -C  -E  -n2   -o1   -S2   		Command exited with non-zero status 124 179.68	
+model_5   -C  -E  -n2   -o2   -S0   		Command exited with non-zero status 124 179.77	
+model_5   -C  -E  -n2   -o2   -S1   		Command exited with non-zero status 124 179.61	
+model_5   -C  -E  -n2   -o2   -S2   		Command exited with non-zero status 124 179.82	
+model_5   -C  -E  -n2   -o3   -S0   		Command exited with non-zero status 124 179.12	
+model_5   -C  -E  -n2   -o3   -S1   		Command exited with non-zero status 124 179.07	
+model_5   -C  -E  -n2   -o3   -S2   		Command exited with non-zero status 124 179.28	
+model_5   -C  -E  -n2   -o4   -S0   		Command exited with non-zero status 124 179.71	
+model_5   -C  -E  -n2   -o4   -S1   		Command exited with non-zero status 124 179.73	
+model_5   -C  -E  -n2   -o4   -S2   		Command exited with non-zero status 124 179.84	
+model_5   -C  -E  -n3   -o0   -S0   		Command exited with non-zero status 124 179.23	
+model_5   -C  -E  -n3   -o0   -S1   		Command exited with non-zero status 124 179.16	
+model_5   -C  -E  -n3   -o0   -S2   		Command exited with non-zero status 124 179.48	
+model_5   -C  -E  -n3   -o1   -S0   		Command exited with non-zero status 124 179.74	
+model_5   -C  -E  -n3   -o1   -S1   		Command exited with non-zero status 124 179.69	
+model_5   -C  -E  -n3   -o1   -S2   		Command exited with non-zero status 124 179.80	
+model_5   -C  -E  -n3   -o2   -S0   		Command exited with non-zero status 124 179.78	
+model_5   -C  -E  -n3   -o2   -S1   		Command exited with non-zero status 124 179.66	
+model_5   -C  -E  -n3   -o2   -S2   		Command exited with non-zero status 124 179.78	
+model_5   -C  -E  -n3   -o3   -S0   		Command exited with non-zero status 124 179.05	
+model_5   -C  -E  -n3   -o3   -S1   		Command exited with non-zero status 124 179.17	
+model_5   -C  -E  -n3   -o3   -S2   		Command exited with non-zero status 124 179.17	
+model_5   -C  -E  -n3   -o4   -S0   		Command exited with non-zero status 124 179.76	
+model_5   -C  -E  -n3   -o4   -S1   		Command exited with non-zero status 124 179.78	
+model_5   -C  -E  -n3   -o4   -S2   		Command exited with non-zero status 124 179.83	
+model_5   -C  -E  -n4   -o0   -S0   		Command exited with non-zero status 124 179.25	
+model_5   -C  -E  -n4   -o0   -S1   		Command exited with non-zero status 124 179.19	
+model_5   -C  -E  -n4   -o0   -S2   		Command exited with non-zero status 124 179.60	
+model_5   -C  -E  -n4   -o1   -S0   		Command exited with non-zero status 124 179.75	
+model_5   -C  -E  -n4   -o1   -S1   		Command exited with non-zero status 124 179.75	
+model_5   -C  -E  -n4   -o1   -S2   		Command exited with non-zero status 124 179.79	
+model_5   -C  -E  -n4   -o2   -S0   		Command exited with non-zero status 124 179.72	
+model_5   -C  -E  -n4   -o2   -S1   		Command exited with non-zero status 124 179.69	
+model_5   -C  -E  -n4   -o2   -S2   		Command exited with non-zero status 124 179.70	
+model_5   -C  -E  -n4   -o3   -S0   		Command exited with non-zero status 124 179.05	
+model_5   -C  -E  -n4   -o3   -S1   		Command exited with non-zero status 124 179.06	
+model_5   -C  -E  -n4   -o3   -S2   		Command exited with non-zero status 124 179.31	
+model_5   -C  -E  -n4   -o4   -S0   		Command exited with non-zero status 124 179.60	
+model_5   -C  -E  -n4   -o4   -S1   		Command exited with non-zero status 124 179.66	
+model_5   -C  -E  -n4   -o4   -S2   		Command exited with non-zero status 124 179.72	
+
+
