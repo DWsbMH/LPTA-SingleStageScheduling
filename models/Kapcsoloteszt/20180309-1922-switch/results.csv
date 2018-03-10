@@ -1,0 +1,155 @@
+		
+model_1      -E  -n0   -o0   -S0   		Command exited with non-zero status 124 59.90	
+model_1      -E  -n0   -o0   -S1   		Command exited with non-zero status 124 59.63	
+model_1      -E  -n0   -o0   -S2   		Command exited with non-zero status 124 59.80	
+model_1      -E  -n0   -o1   -S0   		Command exited with non-zero status 124 59.83	
+model_1      -E  -n0   -o1   -S1   		Command exited with non-zero status 124 59.94	
+model_1      -E  -n0   -o1   -S2   		Command exited with non-zero status 124 59.88	
+model_1      -E  -n0   -o2   -S0   		57.54	
+model_1      -E  -n0   -o2   -S1   		11.19	
+model_1      -E  -n0   -o2   -S2   		Command exited with non-zero status 124 59.53	
+model_1      -E  -n0   -o3   -S0   		0.85	
+model_1      -E  -n0   -o3   -S1   		0.50	
+model_1      -E  -n0   -o3   -S2   		0.55	
+model_1      -E  -n0   -o4   -S0   		37.45	
+model_1      -E  -n0   -o4   -S1   		Command exited with non-zero status 124 59.84	
+model_1      -E  -n0   -o4   -S2   		10.14	
+model_1      -E  -n1   -o0   -S0   		Command exited with non-zero status 124 59.71	
+model_1      -E  -n1   -o0   -S1   		Command exited with non-zero status 124 59.81	
+model_1      -E  -n1   -o0   -S2   		Command exited with non-zero status 124 59.87	
+model_1      -E  -n1   -o1   -S0   		Command exited with non-zero status 124 59.92	
+model_1      -E  -n1   -o1   -S1   		Command exited with non-zero status 124 59.75	
+model_1      -E  -n1   -o1   -S2   		Command exited with non-zero status 124 59.69	
+model_1      -E  -n1   -o2   -S0   		22.41	
+model_1      -E  -n1   -o2   -S1   		2.50	
+model_1      -E  -n1   -o2   -S2   		0.31	
+model_1      -E  -n1   -o3   -S0   		0.34	
+model_1      -E  -n1   -o3   -S1   		0.81	
+model_1      -E  -n1   -o3   -S2   		0.36	
+model_1      -E  -n1   -o4   -S0   		30.14	
+model_1      -E  -n1   -o4   -S1   		Command exited with non-zero status 124 59.75	
+model_1      -E  -n1   -o4   -S2   		14.92	
+model_1      -E  -n2   -o0   -S0   		Command exited with non-zero status 124 59.76	
+model_1      -E  -n2   -o0   -S1   		Command exited with non-zero status 124 59.82	
+model_1      -E  -n2   -o0   -S2   		Command exited with non-zero status 124 59.76	
+model_1      -E  -n2   -o1   -S0   		Command exited with non-zero status 124 59.92	
+model_1      -E  -n2   -o1   -S1   		Command exited with non-zero status 124 59.82	
+model_1      -E  -n2   -o1   -S2   		Command exited with non-zero status 124 59.85	
+model_1      -E  -n2   -o2   -S0   		Command exited with non-zero status 124 59.82	
+model_1      -E  -n2   -o2   -S1   		7.09	
+model_1      -E  -n2   -o2   -S2   		0.53	
+model_1      -E  -n2   -o3   -S0   		0.69	
+model_1      -E  -n2   -o3   -S1   		0.34	
+model_1      -E  -n2   -o3   -S2   		0.60	
+model_1      -E  -n2   -o4   -S0   		1.20	
+model_1      -E  -n2   -o4   -S1   		0.43	
+model_1      -E  -n2   -o4   -S2   		0.63	
+model_1      -E  -n3   -o0   -S0   		Command exited with non-zero status 124 59.86	
+model_1      -E  -n3   -o0   -S1   		Command exited with non-zero status 124 59.84	
+model_1      -E  -n3   -o0   -S2   		Command exited with non-zero status 124 59.90	
+model_1      -E  -n3   -o1   -S0   		Command exited with non-zero status 124 59.75	
+model_1      -E  -n3   -o1   -S1   		Command exited with non-zero status 124 59.80	
+model_1      -E  -n3   -o1   -S2   		Command exited with non-zero status 124 59.73	
+model_1      -E  -n3   -o2   -S0   		5.88	
+model_1      -E  -n3   -o2   -S1   		1.16	
+model_1      -E  -n3   -o2   -S2   		8.28	
+model_1      -E  -n3   -o3   -S0   		0.88	
+model_1      -E  -n3   -o3   -S1   		0.39	
+model_1      -E  -n3   -o3   -S2   		0.66	
+model_1      -E  -n3   -o4   -S0   		0.10	
+model_1      -E  -n3   -o4   -S1   		0.10	
+model_1      -E  -n3   -o4   -S2   		0.12	
+model_1      -E  -n4   -o0   -S0   		Command exited with non-zero status 124 59.74	
+model_1      -E  -n4   -o0   -S1   		Command exited with non-zero status 124 59.78	
+model_1      -E  -n4   -o0   -S2   		Command exited with non-zero status 124 59.82	
+model_1      -E  -n4   -o1   -S0   		Command exited with non-zero status 124 59.89	
+model_1      -E  -n4   -o1   -S1   		Command exited with non-zero status 124 59.89	
+model_1      -E  -n4   -o1   -S2   		Command exited with non-zero status 124 59.96	
+model_1      -E  -n4   -o2   -S0   		0.21	
+model_1      -E  -n4   -o2   -S1   		0.20	
+model_1      -E  -n4   -o2   -S2   		0.01	
+model_1      -E  -n4   -o3   -S0   		0.49	
+model_1      -E  -n4   -o3   -S1   		0.48	
+model_1      -E  -n4   -o3   -S2   		0.56	
+model_1      -E  -n4   -o4   -S0   		5.01	
+model_1      -E  -n4   -o4   -S1   		11.02	
+model_1      -E  -n4   -o4   -S2   		Command exited with non-zero status 124 59.97	
+model_1   -C  -E  -n0   -o0   -S0   		Command exited with non-zero status 124 59.61	
+model_1   -C  -E  -n0   -o0   -S1   		Command exited with non-zero status 124 59.66	
+model_1   -C  -E  -n0   -o0   -S2   		Command exited with non-zero status 124 59.86	
+model_1   -C  -E  -n0   -o1   -S0   		Command exited with non-zero status 124 59.95	
+model_1   -C  -E  -n0   -o1   -S1   		Command exited with non-zero status 124 58.27	
+model_1   -C  -E  -n0   -o1   -S2   		Command exited with non-zero status 124 59.09	
+model_1   -C  -E  -n0   -o2   -S0   		0.06	
+model_1   -C  -E  -n0   -o2   -S1   		0.05	
+model_1   -C  -E  -n0   -o2   -S2   		0.07	
+model_1   -C  -E  -n0   -o3   -S0   		0.31	
+model_1   -C  -E  -n0   -o3   -S1   		0.31	
+model_1   -C  -E  -n0   -o3   -S2   		0.53	
+model_1   -C  -E  -n0   -o4   -S0   		2.91	
+model_1   -C  -E  -n0   -o4   -S1   		38.59	
+model_1   -C  -E  -n0   -o4   -S2   		28.09	
+model_1   -C  -E  -n1   -o0   -S0   		Command exited with non-zero status 124 59.19	
+model_1   -C  -E  -n1   -o0   -S1   		Command exited with non-zero status 124 58.62	
+model_1   -C  -E  -n1   -o0   -S2   		Command exited with non-zero status 124 59.21	
+model_1   -C  -E  -n1   -o1   -S0   		Command exited with non-zero status 124 59.29	
+model_1   -C  -E  -n1   -o1   -S1   		Command exited with non-zero status 124 58.72	
+model_1   -C  -E  -n1   -o1   -S2   		Command exited with non-zero status 124 59.57	
+model_1   -C  -E  -n1   -o2   -S0   		2.79	
+model_1   -C  -E  -n1   -o2   -S1   		6.17	
+model_1   -C  -E  -n1   -o2   -S2   		2.51	
+model_1   -C  -E  -n1   -o3   -S0   		0.68	
+model_1   -C  -E  -n1   -o3   -S1   		0.62	
+model_1   -C  -E  -n1   -o3   -S2   		0.53	
+model_1   -C  -E  -n1   -o4   -S0   		8.00	
+model_1   -C  -E  -n1   -o4   -S1   		51.78	
+model_1   -C  -E  -n1   -o4   -S2   		8.53	
+model_1   -C  -E  -n2   -o0   -S0   		Command exited with non-zero status 124 59.51	
+model_1   -C  -E  -n2   -o0   -S1   		Command exited with non-zero status 124 59.36	
+model_1   -C  -E  -n2   -o0   -S2   		Command exited with non-zero status 124 59.64	
+model_1   -C  -E  -n2   -o1   -S0   		Command exited with non-zero status 124 59.69	
+model_1   -C  -E  -n2   -o1   -S1   		Command exited with non-zero status 124 59.88	
+model_1   -C  -E  -n2   -o1   -S2   		Command terminated by signal 15 38.20	
+model_1   -C  -E  -n2   -o2   -S0   		0.04	
+model_1   -C  -E  -n2   -o2   -S1   		0.03	
+model_1   -C  -E  -n2   -o2   -S2   		0.05	
+model_1   -C  -E  -n2   -o3   -S0   		0.51	
+model_1   -C  -E  -n2   -o3   -S1   		0.26	
+model_1   -C  -E  -n2   -o3   -S2   		0.57	
+model_1   -C  -E  -n2   -o4   -S0   		25.09	
+model_1   -C  -E  -n2   -o4   -S1   		14.45	
+model_1   -C  -E  -n2   -o4   -S2   		1.51	
+model_1   -C  -E  -n3   -o0   -S0   		Command terminated by signal 15 6.17	
+model_1   -C  -E  -n3   -o0   -S1   		Command terminated by signal 15 1.23	
+model_1   -C  -E  -n3   -o0   -S2   		Command terminated by signal 15 1.79	
+model_1   -C  -E  -n3   -o1   -S0   		Command terminated by signal 15 0.97	
+model_1   -C  -E  -n3   -o1   -S1   		Command terminated by signal 15 0.71	
+model_1   -C  -E  -n3   -o1   -S2   		Command terminated by signal 15 1.13	
+model_1   -C  -E  -n3   -o2   -S0   		0.01	
+model_1   -C  -E  -n3   -o2   -S1   		0.01	
+model_1   -C  -E  -n3   -o2   -S2   		0.01	
+model_1   -C  -E  -n3   -o3   -S0   		0.37	
+model_1   -C  -E  -n3   -o3   -S1   		0.48	
+model_1   -C  -E  -n3   -o3   -S2   		0.42	
+model_1   -C  -E  -n3   -o4   -S0   		0.45	
+model_1   -C  -E  -n3   -o4   -S1   		1.22	
+model_1   -C  -E  -n3   -o4   -S2   		0.04	
+model_1   -C  -E  -n4   -o0   -S0   		Command terminated by signal 15 22.79	
+model_1   -C  -E  -n4   -o0   -S1   		Command terminated by signal 15 0.94	
+model_1   -C  -E  -n4   -o0   -S2   		Command terminated by signal 15 0.98	
+model_1   -C  -E  -n4   -o1   -S0   		Command terminated by signal 15 1.09	
+model_1   -C  -E  -n4   -o1   -S1   		Command terminated by signal 15 2.70	
+model_1   -C  -E  -n4   -o1   -S2   		Command terminated by signal 15 1.69	
+model_1   -C  -E  -n4   -o2   -S0   		7.02	
+model_1   -C  -E  -n4   -o2   -S1   		0.07	
+model_1   -C  -E  -n4   -o2   -S2   		0.12	
+model_1   -C  -E  -n4   -o3   -S0   		0.49	
+model_1   -C  -E  -n4   -o3   -S1   		0.50	
+model_1   -C  -E  -n4   -o3   -S2   		0.46	
+model_1   -C  -E  -n4   -o4   -S0   		4.84	
+model_1   -C  -E  -n4   -o4   -S1   		53.72	
+model_1   -C  -E  -n4   -o4   -S2   		1.85	
+
+
+model_2      -E  -n0   -o0   -S0   		3.90	
+model_2      -E  -n0   -o0   -S1   		
