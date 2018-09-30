@@ -29,10 +29,10 @@ public class JavaApplication37 {
     int hatar[]=new int[n+1];
     int wt[]=new int[n+1];
     int turn[]=new int[n+1];
-    int tot_turn=0;
+   /* int tot_turn=0;
     int tot_wait=0;
     float avg_turn=0;
-    float avg_wait=0;
+    float avg_wait=0;*/
     int j;
  
   /*  for(int m=1;m<=n;m++)
@@ -87,13 +87,7 @@ public class JavaApplication37 {
         turn[i]=hossz[i]+turn[i-1];
         wt[i]=turn[i]-hossz[i];
         }
-    for(int i=1;i<=n;i++)
-        {
-      //  tot_turn+=(wt[i]+hossz[i])-kezdes[i];
-        avg_turn=(float)tot_turn/n;
-      //  tot_wait+=wt[i]-kezdes[i];
-        avg_wait=(float)tot_wait/n;
-        }
+  
     System.out.println("\n"+"Eredmény");
     for(int m=1;m<=n;m++)
         {
