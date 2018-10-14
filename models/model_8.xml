@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+// Place global declarations here.
+
+
 const int munkaszam = 3;//25;
 const int gepszam = 4;
 typedef int[0, munkaszam-1] munka_id;
@@ -7,9 +10,9 @@ typedef int[0, gepszam-1] gep_id;
 
 const int munkaido2[25][gepszam] = 
 {
-{1538, -1, -1, 1194},				//15000, 30000, 22000
-{1500, -1, -1, 789},				
-{1607, -1, -1, 818},				
+{1538, -1, -1, 1194},
+{1500, -1, -1, 789},
+{1607, -1, -1, 818},
 {-1, -1, 1564, 2143},
 {-1, -1, 736, 1017},
 {5263, -1, -1, 3214},
@@ -74,7 +77,7 @@ const int hatarido[25] = {15000, 30000, 22000, 25000, 20000, 30000, 21000, 26000
 const int beallasido[gepszam] = {180, 175, 0, 237};
 
 int finishtime[munka_id];
-munka_id job[gep_id];
+gep_id machine[munka_id];
 
 int getReserveTime(gep_id gid){
   	int toReturn = 0;
@@ -84,9 +87,9 @@ int getReserveTime(gep_id gid){
 
 clock time;
 
-int[0,munkaszam] todo = munkaszam;</declaration><template><name x="5" y="5">Gep</name><parameter>const gep_id gid</parameter><declaration>// Place local declarations here.
-clock t;</declaration><location id="id0" x="-4672" y="-3744"></location><location id="id1" x="-4840" y="-3864"><committed/></location><location id="id2" x="-4672" y="-3864"></location><location id="id3" x="-4672" y="-3656"><name x="-4656" y="-3688">Dolgozik</name><label kind="invariant" x="-4640" y="-3664">cost'==1 &amp;&amp; time&lt;=hatarido[job[gid]]</label></location><location id="id4" x="-4984" y="-3696"><name x="-4970" y="-3718">Bekapcsolt</name></location><location id="id5" x="-5224" y="-3696"><name x="-5234" y="-3726">Kikapcsolt</name></location><init ref="id5"/><transition><source ref="id0"/><target ref="id3"/><label kind="guard" x="-4656" y="-3720">t&gt;=munkaido2[job[gid]][gid]</label></transition><transition><source ref="id1"/><target ref="id0"/><nail x="-4840" y="-3744"/></transition><transition><source ref="id1"/><target ref="id2"/><label kind="guard" x="-4792" y="-3896">elozo[gid]!=-1</label><nail x="-4744" y="-3864"/></transition><transition><source ref="id2"/><target ref="id0"/><label kind="guard" x="-4664" y="-3816">t&gt;=atallasi_ido[elozo[gid]][aktualis[gid]]</label><nail x="-4672" y="-3760"/></transition><transition><source ref="id3"/><target ref="id4"/><label kind="guard" x="-4864" y="-3632">time==hatarido[job[gid]]</label><label kind="assignment" x="-4896" y="-3600">todo-- , elozo[gid]=aktualis[gid]</label><nail x="-4672" y="-3608"/><nail x="-4984" y="-3608"/></transition><transition><source ref="id4"/><target ref="id1"/><label kind="select" x="-5136" y="-3768">id: munka_id</label><label kind="guard" x="-5256" y="-3808">munkaido2[id][gid]!=-1  &amp;&amp; time&lt;hatarido[id]</label><label kind="assignment" x="-5192" y="-3784">t=0, aktualis[gid]= id, job[gid]=id</label><nail x="-4984" y="-3800"/><nail x="-4984" y="-3864"/><nail x="-4960" y="-3864"/></transition><transition><source ref="id5"/><target ref="id4"/><label kind="guard" x="-5192" y="-3672">time &gt;= beallasido[gid]</label></transition></template><system>// Place template instantiations here.
+int[0,munkaszam] todo = munkaszam;</declaration><template><name x="5" y="5">Automata</name><parameter>const munka_id id, const gep_id gid</parameter><declaration>// Place local declarations here.
+clock t;</declaration><location id="id0" x="48" y="-416"><name x="38" y="-446">Dolgozik</name><label kind="invariant" x="64" y="-408">cost' == 1 &amp;&amp; time &lt;= hatarido[id]</label></location><location id="id1" x="-288" y="-416"></location><location id="id2" x="-288" y="-288"><name x="-298" y="-318">Kezd</name><label kind="invariant" x="-298" y="-273">time&lt;hatarido[id]</label></location><location id="id3" x="48" y="-272"><name x="64" y="-296">Kesz</name></location><location id="id4" x="-592" y="-288"><name x="-602" y="-318">Start</name><label kind="invariant" x="-664" y="-272">time &lt;= hatarido[id] - minTime(id)</label></location><init ref="id4"/><transition><source ref="id0"/><target ref="id3"/><label kind="guard" x="72" y="-336">time == hatarido[id]</label><label kind="assignment" x="72" y="-360">todo--, aktualis[gid]=-1, elozo[gid]=gid</label></transition><transition><source ref="id1"/><target ref="id0"/><label kind="guard" x="-216" y="-448">t&gt;=finishtime[id]</label><label kind="assignment" x="-248" y="-464">finishtime[id]=getReserveTime(gid)</label></transition><transition><source ref="id2"/><target ref="id1"/><label kind="guard" x="-384" y="-392">elozo[gid]==-1</label></transition><transition><source ref="id2"/><target ref="id0"/><label kind="guard" x="-208" y="-328">t &gt;= munkaido2[id][gid]</label><nail x="-72" y="-368"/></transition><transition><source ref="id4"/><target ref="id2"/><label kind="guard" x="-672" y="-248">time&gt;= beallasido[gid] &amp;&amp; munkaido2[id][gid]!=-1 &amp;&amp;aktualis[gid]==-1</label><label kind="assignment" x="-512" y="-320">aktualis[gid]= id, t=0</label></transition></template><system>// Place template instantiations here.
 
 
 // List one or more processes to be composed into a system.
-system Gep;</system></nta>
+system Automata;</system></nta>
