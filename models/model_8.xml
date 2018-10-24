@@ -69,30 +69,20 @@ int minTime(munka_id mid){
 return toReturn;
 }
 
-int[-1,munkaszam-1] elozo[gepszam]={-1,-1,-1,-1};
-int[-1,munkaszam-1] aktualis[gepszam]={-1,-1,-1,-1};
+int[-1,munkaszam-1] gallapot[gepszam]={-1,-1,-1,-1};
+int[0,2] jallapot[munkaszam]={0,0,0};
 
 const int hatarido[25] = {15000, 30000, 22000, 25000, 20000, 30000, 21000, 26000, 30000, 29000, 30000, 21000, 30000, 25000, 24000, 30000, 30000, 30000, 13000, 19000, 30000, 20000, 12000, 30000, 17000};
 
 const int beallasido[gepszam] = {180, 175, 0, 237};
 
-int finishtime[munka_id];
-gep_id machine[munka_id];
-
-int getReserveTime(gep_id gid){
-  	int toReturn = 0;
- 	 if(elozo[gid]!=-1) toReturn += atallasi_ido [elozo[gid]][aktualis[gid]];
-  	return toReturn + munkaido2[aktualis[gid]][gid];
-}
-
 clock time;
+clock c[gep_id];
 
 int[0,munkaszam] todo = munkaszam;
 
-chan elkezd[munka_id];
-chan befejez[munka_id];</declaration><template><name x="5" y="5">Automata</name><parameter>const munka_id id, const gep_id gid</parameter><declaration>// Place local declarations here.
-clock t;</declaration><location id="id0" x="48" y="-416"><name x="38" y="-446">Dolgozik</name></location><location id="id1" x="-288" y="-416"></location><location id="id2" x="-288" y="-288"><name x="-298" y="-318">Kezd</name><label kind="invariant" x="-298" y="-273">time&lt;(hatarido[id]-munkaido2[id][gid])</label></location><location id="id3" x="48" y="-272"><name x="64" y="-296">Kesz</name></location><location id="id4" x="-592" y="-288"><name x="-602" y="-318">Start</name><label kind="invariant" x="-664" y="-272">time &lt;= hatarido[id] - minTime(id)</label></location><init ref="id4"/><transition><source ref="id0"/><target ref="id3"/><label kind="synchronisation" x="64" y="-336">befejez[id]!</label><label kind="assignment" x="64" y="-360">todo--, elozo[gid]=gid</label></transition><transition><source ref="id1"/><target ref="id0"/><label kind="guard" x="-216" y="-448">t&gt;=finishtime[id]</label><label kind="synchronisation" x="-176" y="-416">elkezd[id]!</label><label kind="assignment" x="-248" y="-464">finishtime[id]=getReserveTime(gid)</label></transition><transition><source ref="id2"/><target ref="id1"/><label kind="guard" x="-384" y="-384">elozo[gid]==-1</label></transition><transition><source ref="id2"/><target ref="id0"/><label kind="guard" x="-176" y="-320">t &gt;= munkaido2[id][gid]</label><label kind="synchronisation" x="-104" y="-344">elkezd[id]!</label><nail x="-72" y="-368"/></transition><transition><source ref="id4"/><target ref="id2"/><label kind="guard" x="-672" y="-248">time&gt;= beallasido[gid] &amp;&amp; munkaido2[id][gid]!=-1 &amp;&amp;aktualis[gid]==-1</label><label kind="assignment" x="-512" y="-320">aktualis[gid]= id, t=0</label></transition></template><template><name>P0</name><declaration>int ktg=-1;
-</declaration><location id="id5" x="-384" y="0"><name x="-394" y="-30">Dolg</name></location><location id="id6" x="-320" y="-96"><label kind="invariant" x="-296" y="-104">cost'==ktg</label></location><init ref="id6"/><transition><source ref="id6"/><target ref="id5"/><label kind="select" x="-336" y="-64">jid:munka_id</label><label kind="synchronisation" x="-336" y="-40">elkezd[jid]?</label></transition><transition><source ref="id5"/><target ref="id5"/><label kind="select" x="-512" y="32">jid:munka_id</label><label kind="guard" x="-560" y="80">time&lt;hatarido[jid]</label><label kind="assignment" x="-496" y="56">ktg+=1</label><nail x="-480" y="192"/><nail x="-280" y="192"/></transition><transition><source ref="id5"/><target ref="id6"/><label kind="select" x="-240" y="-208">jid: munka_id</label><label kind="guard" x="-256" y="-184">time==hatarido[jid]</label><label kind="synchronisation" x="-272" y="-160">befejez[jid]?</label><nail x="-496" y="-224"/><nail x="-240" y="-224"/></transition></template><system>// Place template instantiations here.
+</declaration><template><name>P0</name><declaration>int ktg=-1;
+</declaration><location id="id0" x="-392" y="-80"></location><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-208" y="8">j: munka_id</label><label kind="guard" x="-240" y="32">time==hatarido[j] &amp;&amp; jallapot[j]==1</label><label kind="assignment" x="-224" y="48">jallapot[j]=2, ktg==1, todo--</label><nail x="-248" y="88"/><nail x="-264" y="104"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-328" y="-328">g: gep_id</label><label kind="guard" x="-392" y="-288">gallapot[g]!=-1 &amp;&amp; c[g]==munkaido2[gallapot[g],g]</label><label kind="assignment" x="-384" y="-264">ktg+=1, jallapot[gallapot[g]]=1, gallapot[g]=-1</label><nail x="-340" y="-234"/><nail x="-212" y="-226"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-912" y="-79">j : munka_id, g: gep_id</label><label kind="guard" x="-912" y="-64">time &lt;= hatarido[j]-munkaido2[j,g] &amp;&amp; jallapot[j]==0 &amp;&amp; gallapot[g]=-1</label><label kind="assignment" x="-912" y="-34">gallapot[g]=j &amp;&amp; c[g]=0</label><nail x="-504" y="-80"/><nail x="-496" y="-224"/></transition></template><system>// Place template instantiations here.
 
 
 // List one or more processes to be composed into a system.
