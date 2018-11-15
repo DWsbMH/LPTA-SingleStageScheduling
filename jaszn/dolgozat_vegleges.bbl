@@ -1,0 +1,66 @@
+\begin{thebibliography}{10}
+
+\bibitem{Behrmann2001}
+G~Behrmann, A~Fehnker, T~Hune, K~G Larsen, P~Pettersson, and J~Romijn.
+\newblock {Efficient Guiding Towards Cost-Optimality in UPPAAL}.
+\newblock In {\em 7th International Conference on Tools and Algorithms for the
+  Construction and Analysis of Systems (TACAS'01). Genova, Italy, April 2 to 6,
+  2001. LNCS 2031}, pages 174--188. Uppsala University, Department of
+  Information Technology, 2001.
+
+\bibitem{Behrmann2005}
+G.~Behrmann, K.~G. Larsen, and J.~I. Rasmussen.
+\newblock Optimal scheduling using priced timed automata. performance
+  evaluation review.
+\newblock {\em ACM Sigmetric}, 32(4):34--40, 2005.
+
+\bibitem{Ghaeli2005}
+Mahsa Ghaeli, Parisa~A Bahri, Peter Lee, and Tianlong Gu.
+\newblock {Petri-net based formulation and algorithm for short-term scheduling
+  of batch plants}.
+\newblock {\em Computers {\&} Chemical Engineering}, 29(2):249--259, 2005.
+
+\bibitem{Hegyhati2009}
+M.~Hegyh{\'{a}}ti, T.~Majozi, T.~Holczinger, and F.~Friedler.
+\newblock {Practical infeasibility of cross-transfer in batch plants with
+  complex recipes: S-graph vs MILP methods}.
+\newblock {\em Chemical Engineering Science}, 64(3):605--610, 2009.
+
+\bibitem{Hegyhati2010}
+Mate Hegyhati and Ferenc Friedler.
+\newblock {Overview of Industrial Batch Process Scheduling}.
+\newblock {\em Chemical Engineering Transactions}, 21:895--900, 2010.
+
+\bibitem{Kopanos2009}
+G~M Kopanos, J~M Lainez, and L~Puigjaner.
+\newblock {An Efficient Mixed-Integer Linear Programming Scheduling Framework
+  for Addressing Sequence-Dependent Setup Issues in Batch Plants}.
+\newblock {\em Industrial {\&} Engineering Chemistry Research},
+  48(13):6346--6357, 2009.
+
+\bibitem{Mendez2006}
+Carlos~A Mendez, Jaime Cerda, Ignacio~E Grossmann, Iiro Harjunkoski, and Marco
+  Fahl.
+\newblock {State-of-the-art review of optimization methods for short-term
+  scheduling of batch processes}.
+\newblock {\em Computers {\&} Chemical Engineering}, 30(6-7):913--946, 2006.
+
+\bibitem{Panek2008}
+Sebastian Panek, Sebastian Engell, Subanatarajan Subbiah, and Olaf Stursberg.
+\newblock {Scheduling of multi-product batch plants based upon timed automata
+  models}.
+\newblock {\em Computers {\&} Chemical Engineering}, 32(1-2):275--291, 2008.
+
+\bibitem{Smidla2010}
+Jozsef Smidla and Istvan Heckl.
+\newblock {S-graph based parallel algorithm to the scheduling of multipurpose
+  batch plants}.
+\newblock {\em Chemical Engineering Transactions}, 21(1994):937--942, 2010.
+
+\bibitem{Subbiah2009}
+Subanatarajan Subbiah, Thomas Tometzki, Sebastian Panek, and Sebastian Engell.
+\newblock {Multi-product batch scheduling with intermediate due dates using
+  priced timed automata models}.
+\newblock {\em Computers {\&} Chemical Engineering}, 33(10):1661--1676, 2009.
+
+\end{thebibliography}
