@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+// Place global declarations here.
+
+
+const int munkaszam = 3;//25;
+const int gepszam = 4;
+typedef int[0, munkaszam-1] munka_id;
+typedef int[0, gepszam-1] gep_id;
+
+
+const int munkaido[25][gepszam] = 
+{
+{1538, -1, -1, 1194},
+{1500, -1, -1, 789},
+{1607, -1, -1, 818},
+{-1, -1, 1564, 2143},
+{-1, -1, 736, 1017},
+{5263, -1, -1, 3214},
+{4865, -1, 3025, 3214},
+{-1, -1, 1500, 1440},
+{-1, -1, 1869, 2459},
+{-1, 1282, -1, -1},
+{-1, 3750, -1, 3000},
+{-1, 6796, 7000, 5600},
+{11250, -1, -1, 6716},
+{2632, -1, -1, 1527},
+{5000, -1, -1, 2985},
+{1250, -1, -1, 783},
+{4474, -1, -1, 3036},
+{-1, 1492, -1, -1},
+{-1, 3130, -1, 2687},
+{2424, -1, 1074, 1600},
+{7317, -1, 3614, -1},
+{-1, -1, 864, -1},
+{-1, -1, 3624, -1},
+{-1, -1, 2667, 4000},
+{5952, -1, 3448, 4902}
+};
+
+int[-1,munkaszam-1] gallapot[gepszam]={-1,-1,-1,-1};
+int[0,2] mallapot[munkaszam]={0,0,0};
+
+const int hatarido[25] = {15000, 30000, 22000, 25000, 20000, 30000, 21000, 26000, 30000, 29000, 30000, 21000, 30000, 25000, 24000, 30000, 30000, 30000, 13000, 19000, 30000, 20000, 12000, 30000, 17000};
+
+
+clock time;
+clock c[gep_id];
+
+int[0,munkaszam] todo = munkaszam;
+
+</declaration><template><name>P0</name><declaration>int ktg=-1;
+</declaration><location id="id0" x="-392" y="-80"></location><init ref="id0"/><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-288" y="-72">m: munka_id</label><label kind="guard" x="-288" y="-40">time==hatarido[m] &amp;&amp; mallapot[m]==1</label><label kind="assignment" x="-288" y="-8">mallapot[m]=2, ktg==1, todo--</label><nail x="-304" y="80"/><nail x="-456" y="80"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-392" y="-328">g: gep_id</label><label kind="guard" x="-392" y="-296">gallapot[g]!=-1 &amp;&amp; c[g]==munkaido[gallapot[g]][g]</label><label kind="assignment" x="-392" y="-264">ktg+=1, mallapot[gallapot[g]]=1, gallapot[g]=-1</label><nail x="-340" y="-234"/><nail x="-208" y="-232"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-704" y="-96">m : munka_id, g: gep_id</label><label kind="guard" x="-872" y="-64">time &lt;= hatarido[m]-munkaido[m][g] &amp;&amp; mallapot[m]==0 &amp;&amp; gallapot[g]==-1</label><label kind="assignment" x="-688" y="-128">gallapot[g]=m, c[g]=0</label><nail x="-536" y="-80"/><nail x="-536" y="-224"/></transition></template><system>// Place template instantiations here.
+
+
+// List one or more processes to be composed into a system.
+system  P0;</system></nta>

@@ -1,4 +1,4 @@
-\documentclass {report}
+\documentclass [12pt]{report}
 
 \usepackage[magyar]{babel}
 \usepackage[utf8]{inputenc}
@@ -9,6 +9,8 @@
 \usepackage{lipsum}
 \usepackage{geometry}
 \usepackage{pdfpages}
+\linespread{1.3}
+
 
 \begin{document}
 \includepdf[pages = {1}]{cucc.pdf}
@@ -96,8 +98,28 @@ Az ütemezési feladatok megoldását Gantt diagramon ábrázolják. A példa h�
  \indent $\mathbf{\Sigma}$ az események véges halmaza\\
  \indent \textbf{$\delta$}: K x $\Sigma$ $\rightarrow$ K részleges átmeneti függvény\\
  \indent \textbf{s} a kezdőállapot\\
- \indent \textbf{F} az elfogadó állapotok \\
+ \indent \textbf{F} az elfogadó állapotok \\\\
+ 
+ Egy időzítés nélküli determinisztikus automata az \ref{tab:det} ábrán látható módon épül fel.\\
+ \begin{figure}
+ \begin{center}
+ \label{tab:det}
+ \includegraphics[width=12cm]{det}
+  \caption{Determinisztikus automata}
+ \end{center}
+ \end{figure}
+ 
+ Az automata két állapotból áll, valamit \emph{a, b} eseményekből, az élek mutatják, hogy melyik állapotból milyen események hatására melyik állapotba kerülhet az automata. Ez alapján megállapíthatunk olyan szavakat, amelyek végig tudnak futni, és vannak olyanok is, amelyek nem.\\\\
+ 1. példa - szó, ami lett tud futni\\
+ aaba - Az első állapotból átmegy a másodikba az \emph{a} eseménnyel, ugyanígy a harmadikba, majd a harmadik állapotból \emph{b} esemény hatására ugyanebben az állapotban marad. Végül \emph{a}-val eljut a végső elfogadó állapotba. \\
+ 2. példa - nem megfelelő szó\\
+ aba - Eljut a második állapotba \emph{a} esemény hatására, de a második állapotból csak egy újabb \emph{a} eseménnyel tudna átkerülni a harmadik állapotba, viszont a szó \emph{b}-t tartalmaz, így nincs olyan él, amelyen tovább tudna haladni.\\
+ 
+
+ 
+ 
 Az időzített automaták kiegészülnek órákkal, amelyek stopperóraként működnek, tehát a globálisan deklarált óra az automata teljes lefutási idejét méri.\\
+	Egy átmenet csak akkor történhet meg, ha az időzítési feltétel teljesült, az átmenet után az órák akár vissza is állíthatók. Ezekben az esetekben általában a feladatokat és a berendezéseket külön modellezik, és paralell composition használatával kapcsolják őket össze. A külön modellezés eredményeképpen az elkészült modell nagy lesz, és bonyolult bemutatni, mégis az eredmények megalapozottak. \\
 Az időzített automata képlete:\\
 \begin{center}
 $(K, \Sigma, C, Tra, Inv, s)$\\
@@ -117,7 +139,9 @@ A fenti felírás azt mutatja, hogy melyik időpillanatban történik az esemén
 d1$\rightarrow$ \textbf{a} $\rightarrow$d2$\rightarrow$ \textbf{b} $\rightarrow$d1$\rightarrow$ \textbf{a} $\rightarrow$d2$\rightarrow$ \textbf{b} $\rightarrow$b4$\rightarrow$ \textbf{b}
 \end{center}
 ahol \emph{d} a késleltetést (delay-t) mutatja.\\
-Az első \emph{a} 1 delay eltelte után kezdődhet el, és mivel \emph{b} 3 delay után következik, \emph{a}-t követően 2 delay-t kell várnia, a következő betűk pedig ennek alapján ugyanezt a szabályt követik. \cite{Behrmann2005} \cite{Panek2008}\\
+Az első \emph{a} 1 delay eltelte után kezdődhet el, és mivel \emph{b} 3 delay után következik, \emph{a}-t követően 2 delay-t kell várnia, a következő betűk pedig ennek alapján ugyanezt a szabályt követik.\\
+Az időzített automatát a label ábrán mutatott példán láthatjuk. Minden átmenet három részből áll, a korlátozásból, az eseményből, és a visszaállított értékből (guard, event, reset). \\
+Az események \emph{msg} és \emph{reset}, c1-el az órát jelölik, az állapotok 0 és 3 között sorszámozottak. A 0 és 1 állapot között nincs korlátozás, ezért átmehet az 1-es állapotba \emph{msg} esemény hatására, az órát visszaállítja. \cite{Behrmann2005} \cite{Panek2008}\\
 
 \section{UPPAAL Cora}
 A választott irodalmi példa időzített automatákkal való ütemezését az UPPAAL Cora nevű szoftver segítségével modelleztük. A szoftver alkalmas az automaták modellezésére, ütemezésére és optimalizálására meghatározott paraméterek alapján. \\
@@ -143,7 +167,8 @@ A szimulátor közben bemutatja, hogyan változtak az értékek, hogy az automat
 \end{center}
 \end{figure}
 A 4.2 ábrán látható egy példa egy minta szekvenciadiagramot árázol, ahol két gépen három feladat kerül felosztásra, és bemutatja a szinkronizációs csatornák működését az egyik megoldásban.\\
-A harmadik menüpont a Verifier, itt a Query-ben meg lehet adni lekérdezéseket, amelyet az UPPAAL lefuttat, majd kiírja az eredményt, amely két fajta lehet. Ha a beírt korlát alapján talált megoldást, akkor megkapjuk a \emph{Property is satisfied} üzenetet zölddel kiírva a Status pont alatt. Az Overview-nál is megjelenik a megadott Query, mellette pedig egy zöld jel. Ellenkező esetben a \emph{Property is not satisfied} üzenetet kapjuk, az Overview pedig piros jelet tesz a Query-ben megadott korlát mellé.    \\
+A harmadik menüpont a Verifier, itt a Query-ben meg lehet adni lekérdezéseket, amelyet az UPPAAL lefuttat, majd kiírja az eredményt amely két fajta lehet. Ha a beírt korlát alapján talált megoldást, akkor megkapjuk a \emph{Property is satisfied} üzenetet zölddel kiírva a Status pont alatt.  Az UPPAAL a TCTL logika egyszerűbb formáját használja a query nyelvében.\\
+ Az Overview-nál is megjelenik a megadott Query, mellette pedig egy zöld jel. Ellenkező esetben a \emph{Property is not satisfied} üzenetet kapjuk, az Overview pedig piros jelet tesz a Query-ben megadott korlát mellé.    \\
 A főmenüben leginkább az általános lehetőségeket találjuk, a Tools és az Options pontokban találhatóak egyéb beállítások az automaták ütemezésével kapcsolatban. Leellenőrizhető a Declarations és a template-ek definiálása során megadott adatok és korlátozások szintaktikai helyessége, az Options pedig az ütemezési beállításokat tartalmazza. \\
 Átállítható például, hogy ütemezés során mélységi, szélességi vagy egyéb keresést alkalmazzon, valamint hasznos funkció, hogy ha a Diagnostic Trace értékét some-ra állítjuk, akkor abban az esetben, ha a Query-ben definiált lekérdezés teljesül, a megoldást be tudja tölteni a szimulátorba. A szimulátorban grafikusan, diagramon és változónként is elemezhető az eredmény. \\
 Az UPPAAL Cora-hoz Java Runtime Enviroment szükséges, mivel a felhasználói interfész Java nyelven van implementálva.
@@ -165,8 +190,27 @@ A feladatban munkákat és gépeket különböztetünk meg, amelyeket később P
      A template-ek meghatározásához a deklarációban adtuk meg a szükséges paramétereket, illetve függvényeket, amelyek szükségesek az automaták ütemezésének futtatásához. Meghatároztuk a gépek és a feladatok számát, ami az irodalmi példa szerint négy gépet és huszonöt feladatot jelent, majd ezeknek kiosztottunk egy saját azonosítót. Szintén a globális deklarációban definiáltuk a munkaidőket gépek szerint, hiszen minden gép más-más idő alatt tud elvégezni egy feladatot. Ugyanígy megadtuk a határidőket, átállási időt, a beállási időt és a csatornákat is.\\
      A modell három csatorna tömböt tartalmaz, amelyek a \emph{foglal, elenged} és \emph{kezdődik} elnevezésűeket, ezek mindegyike annak a gépnek a sorszámát tárolja el paraméterben, amelyiken a feladat végrehajtódik.\\ 
       Deklaráltuk a globális órát, amely az ütemezés kezdetétől méri az összes időt, amíg az utolsó lépést el nem végzi, ezen kívül a \emph{feladat} és a \emph{gép} template rendelkezik külön órával. A feladat sablon a munkaidővel és a határidővel hangolja össze a saját óráját, a gép pedig a saját beállási idejét méri vele. 
+      A deklaráció szintaktikája három fő elemből épülhet fel.\\
+       A template típusú elemek, melyek közé tartoznak a csatornák, ezeket \emph{chan}-ként hozhatjuk létre, valamint ide tartoznak az int típusú változók is, amelyek az ütemezés során többször is értéket kaphatnak. A csatornákat is lehet tömbként létrehozni, az általam létrehozott modellekben annyi csatornát hoztam létre, ahány gép áll rendelkezésre, így a catorna létrehozásakor paraméterként a gépszámot tartalmazó konstans integer értéket kapta meg. \\
+      A második nagyobb csoport a konstansoké, ezeket a futtatás előtt deklaráljuk, értéküket nem változtatják, manuálisan kell őket beállítani. Ezeknek mindenképpen integer értéket kell adni, létrehozásuk a \emph{const int név} formában lehetséges, ahol a const jelzi, hogy statikus értékről van szó, a \emph{név} helyére kerül a konstans neve.\\
+       A modelljeim létrehozásakor a munkaidők, a munkaszám, a gépszám, az átállási idők, a beállási idők és a határidők is konstansként kerültek létrehozásra, hiszen ezek az értékek előre megadottak, és nem változtathatók meg.\\
+       A munkaidő és az átállási idő értékek kétdimenziós tömbben vannak tárolva, ahol a munkaidők esetében az egyik érték a munkaszám, a másik a gépszám, mivel minden gépen minden feladat más munkaidővel rendelkezik. A munkaszámokat nem a \emph{munkaszám} változóval adtam meg, mivel ha változtatni próbálnánk a munkaszám értékét (amire a tesztelés során szükség lesz), a munkaidő szintaxis hibát jelezne amiatt, hogy az egyik paraméter megváltozott, a deklarált értéksorok száma viszont nem. Azzal, hogy konstans értékkel szerepel a munkaszám, az érték megváltoztatható, de a munkaidő értékek sem lesznek hibásak. \\
+       Az átállási időt szintén kétdimenziós tömbként hoztam létre, ahol a korábban említett probléma elkerülése okán konstans számokként határoztam meg a munkaszám értékeket. 
+      A korlátos integer változók a harmadik csoport. Korlátok, invariánsok, feladatok is tartalmazhatnak korlátos integer változókat, ezek a verifikáció során ellenőrzésre kerülnek, és ha megsértik a korlát értékeket, érvénytelen állapotot eredményeznek, ami eldobásra kerül futtatáskor. Ezeket a változókat az \emph{int[min,max] név} formában lehet létrehozni, ahol a min és a max értékek jelentik a felső és az alsó korlátokat. Ha a korlátokat elhagyjuk, az alapértelmezett értéktartomány -32768-tól 32768-ig tart.\\
+      A fent említett elemeken kívül léteznek még különböző típusok, ezek közül a C nyelvhez hasonló typedef konstruktort használtam, amellyel egyéni vagy alap típusokat lehet definiálni értékek számára. A deklarációban a munkák, illetve a gépek sorszámainak tárolására hoztam létre egy \emph{typedef int} típusú változót, amely egyben korlátos is, mivel egy 0-tól a megadott munkaszámig tartó intervallummal került paraméterezésre.
+      \\
+      
     \subsection{Template-ek}
-    A modellben két különböző template-tel dolgozunk, ezek a Gép és Feladatok elnevezésű sémák. Mivel az ütemezést három különböző változatra bontottuk, itt az első modell kerül bemutatásra, amely nem tartalmaz korlátozásokat az ütemezési folyamat gyorsításának szempontjából.\\
+    A modellben két különböző template-tel dolgozunk, ezek a Gép és Feladatok elnevezésű sémák. Mivel az ütemezést több különböző változatra bontottuk, itt az első modell kerül bemutatásra, amely nem tartalmaz korlátozásokat az ütemezési folyamat gyorsításának szempontjából.\\
+    A template-ek létrehozásakor az éleknél és az állapotnál különböző beállításokra volt szükség, ahol a modell a deklarációban létrehozott változókat és értékeket felhasználja.
+    Az élekhez tartozó szerkesztési ablakban van lehetőség arra, hogy ezekkel beállítsuk a szükséges korlátozásokat, szinkronizációt, valamint frissítsünk vagy kiválasszunk értékeket.\\
+    Az élek szerkesztési ablakában a \emph{Select, Guard, Syncronisation} és \emph{Update} pontok találhatóak meg. A Select egy \emph{név:típus} formájú kifejezést vár, ahol a név a változó neve lesz, a típus pedig egy már létrehozott típusdefiníciós változó. Ezzel egy változóba menthetjük el például a feladat által befoglalt gép sorszámát, mint ahogy ez a Feladat template paraméterezése során is megtörtént. \\
+    A Guard egy olyan korlátozási kifejezés, amely boolean értéket ad vissza, emiatt csak integer, konstans vagy óra értékre lehet alkalmazni. Órákat csak integerekkel lehet összehasonlítani. Az első modellben automatájában a legtöbb élen vannak korlátozások, amelyek teljesülése esetén kerülhet az automata a következő állapotba. A szintaxis nyelve hasonló a C programozási nyelvhez, operátorokkal tudjuk kifejezni a feltételt. A Feladat template-ben az első élen a munkaidő nem lehet 100000, amelyet != operátorral állítunk be.\\
+    A bináris csatornák használatakor a két template közti szinkronizációt a létrehozott csatorna címkézésével lehet beállítani. Például a \emph{kezdődik} csatorna úgy hangolja össze a két template-et, hogy a megfelelő él szerkesztési ablakában a szinkronizációs beállításoknál megadjuk a csatorna nevét, a hozzá tartozó paramétert, ez pedig eltárolja a gép sorszámát. Az összehangolást a ? és !  operátorok végzik el, tehát az egyik template-ben létrehozott \emph{kezdődik[id]!} csatorna a másik template \emph{kezdődik[id]?} csatornájával szinkronizál.\\
+    Az Update lehetőségnél vesszővel elválasztva frissítési értékeket adhatunk változóknak, konstansoknak vagy óráknak. Az update pont az egyetlen az említettek közül, amelynek side-effect hatása lehet, mivel változtathat a korábbi értékeken. Az első modellben frissítéssel adunk értéket például akkor, amikor az aktuális és az előző munkát akarjuk frissíteni. Az aktuális értéket az automata első élén állítjuk be, majd a feladat elvégzése után átállítjuk, mivel elvégzésre került, és az azonos gépen elvégzendő következő feladat átállási idejénél ennek a feladatnak és az elvégzendő kiválasztott feladatnak az átállási idejét kell figyelembe venni.\\
+    A későbbi modellekben használjuk a committed állapotot, amely nem engedi meg, hogy a következő átmenet késleltetve történjen meg.\\
+    A template-ek számára lokális paramétereket is deklarálhatunk, ezeket a template-ek feletti \emph{paraméterek} lehetőségnél lehet létrehozni, és csak az adott automata számára lesznek elérhetőek. \\
+    
     \subsubsection*{Gép template}
     Az Gép elnevezésű template azt a minta gépet modellezi, amelyen a feladatokat el kell végezni. Három fő állapota van, ezek a kikapcsolt, bekapcsolt és a dolgozik. Kikapcsolt állapotból indul, és akkor kerül át bekapcsoltba, ha letelt az adott gépnek szükséges beállási idő, ezután kezdhet el dolgozni.  Ha a berendezés már bekapcsolt állapotban van, egy feladat befoglalhatja, ezt a \emph{foglal} csatorna szinkronizálja, annak a gépnek az automatája lép át a következő állapotba. Mielőtt \emph{Dolgozik} állapotba jutna, meg kell vizsgálnia, hogy az azon a gépen ez lesz-e az első elvégzett munka, mivel két munka elvégzése között átállási időt számol fel. Ha előtte nem dolgozott, akkor átállási idő nincs, a berendezés átvált \emph{Dolgozik} állapotba a \emph{kezdődik} csatorna segítségébel. Ellenben ha egy másik munka már megelőzte a jelenlegi munkát, az eltárolt aktuális és előző feladat azonosítója alapján ki kell várnia a hozzájuk tartozó átállási időt, és csak azután kezdheti meg a munkát. \\
     A \emph{foglal} csatorna közben szinkronizálja a gépet a feladat modelljével, a munkaidő letelte után pedig mindkét automata az \emph{elenged} csatorna segítségével jut a következő állapotba, ami a gép esetében a bekapcsolt állapot, ekkor vár az újabb feladat érkezéséig. Itt váltja át az előző munka azonosítóját, hiszen az elvégzett munka a következő lefutás során már az előző munkának fog számítani. 
@@ -395,7 +439,8 @@ A feladat lényege, hogy minden feladat elvégzésre kerüljön a saját határi
    \section{A tesztelés módja és környezete}
    A tesztesetek futtatását egy Acer Aspire V3-571 laptopon futtattam, amelyen Windows 7 Professional operációs rendszer fut. A processzor Intel Core i3 3120M 2,50 Hz típusú, a gép 4 GB RAM-mal rendelkezik. \\
    Az UPPAAL Cora szoftver, amelyen az automatákat modelleztük a 2006-os 4.0.2 verzió.\\
-   Minden tesztesetet háromszor futtattunk le, hogy még pontosabb eredményt kapjunk az ütemezés elvégzésének gyorsaságáról. Ezeket addig végeztük, amíg az egyes esetek futásának ideje el nem érte az egy perces időkorlátot. Amennyiben minden alkalommal sikeresen megkaptuk az eredményt, a három érték átlagát tekintettük érvényesnek, később ezt vettük figyelembe. 
+   Minden tesztesetet háromszor futtattunk le, hogy még pontosabb eredményt kapjunk az ütemezés elvégzésének gyorsaságáról. Ezeket addig végeztük, amíg az egyes esetek futásának ideje el nem érte az egy perces időkorlátot. Amennyiben minden alkalommal sikeresen megkaptuk az eredményt, a három érték átlagát tekintettük érvényesnek, később ezt vettük figyelembe. \\
+
    \section{Első teszteset}
    \begin{table}[htpb]
    \centering
@@ -437,16 +482,62 @@ A feladat lényege, hogy minden feladat elvégzésre kerüljön a saját határi
    Összességében megállapítható, hogy a fokozatosan hozzátett korlátozások nem javították számottevően a számítási teljesítményt, sőt néhány esetben azzal, hogy az automata szerkezete bonyolultabbá vált, több erőforrást vett igénybe az ütemezés, így nem javultak az eredmények, néhány helyen inkább pár másodpercet romlottak. A korlátozások beépítésének célja az lett volna, hogy a keresési fának olyan ágait eleve kizárjuk vele, amelyek előrelátható módon nem vezettek volna jó megoldáshoz, deadlock-ba ért volna az ütemezés. Tovább korlátozható a modell az állapotok \emph{committed} és \emph{urgent} beállításaival, amik nem engednek késleltetést a megjelölt állapotban.\\ 
    A Modell 5 azért lehetett számottevően gyorsabb, mert egy automata az alapja, és nem kell csatornák segítségével paralell composition-t létrehozni a feladat automatáknak. 
    \section{Kapcsolók}
-   A parancssori futtatás során lehetőség van különböző kapcsolók megadására.\\ 
+      Mint korábban említésre került, a teszteseteket nem az UPPAAL Cora szoftver Verifier menüpontjából futtattam le, hanem parancssori környezetben, ahol a szoftverhez tartozó beállítás lehetőségek a következőek.\\
    Az UPPAAL Cora parancssori következő parancssori paramétereit használtuk: \emph{E, C, n, o, S}, ezek segítségével futtattuk le a második teszteset során a modelleket, hogy megvizsgáljuk, a jól megválasztott kapcsolókkal lehet-e időt spórolni. A gyorsabb lefutás szükséges ahhoz, hogy minél több feladattal elvégezhető legyen az ütemezés.\\
    A kapcsolók funkciói:\\
    \begin{itemize}
-   \item \textbf{-E}: Nem írja ki a részletes eredményt a kimenetre, csak a főbb eredményeket, jelen esetben azt, hogy talált-e feasible megoldást és a költségeket.
+   \item \textbf{-E}: Nem írja ki a részletes eredményt a kimenetre, csak a főbb eredményeket, jelen esetben azt, hogy talált-e feasible megoldást, és a költségeket. Működése hasonló, mint a t3 kapcsolóé. 
    \item \textbf{-C}: Lecsökkenti a memóriafelhasználást, főleg olyan modelleknél, ami több órát is tartalmaz. Gyorsítási céllal használható.
-   \item \textbf{n}: Kiválasztja az extrapolációs operátort, ebben az esetben lehet automatikus, exrapoláció nélküli, különbség alapú vagy location alapú.
-   \item \textbf{o}: Kiválasztja a keresés irányát, amely lehet szélességi, mélységi, optimális, random mélységi, random optimális és heurisztikus.
-   \item \textbf{S}: Optimalizálja a helyigényt. Három fokozata van, kikapcsolt, alapértelmezett és a leghatékonyabb.
+   \item \textbf{n}: Kiválasztja az extrapolációs operátort, amely a múltbeli adatok alapján következtet változó  későbbi értékére. 
+   			\begin{itemize}
+   			\item {0}: automatikus
+   			\item {1}: nincs extrapoláció
+   			\item {2}: különbségi extrapoláció
+   			\item {3}: elhelyezkedés alapú extrapoláció
+   			\item {4}: alacsonyabb/magasabb extrapoláció
+   			\end{itemize}
+   \item \textbf{o}: Kiválasztja a keresés irányát.
+   			\begin{itemize}
+			\item {0}: szélességi keresés
+   			\item {1}: mélységi keresés
+   			\item {2}: random mélységi keresés
+   			\item {3}: optimális először
+   			\item {4}: random optimális mélységi keresés
+   			\item {5}: legkisebb heurisztikus először
+   			\end{itemize}
+   \item \textbf{S}: Optimalizálja a helyigényt. 
+   				\begin{itemize}
+   				\item {0}: nincs optimalizálás
+      			\item {1}: alapértelmezett optimalizálás
+      			\item {2}: leghatékonyabb optimalizálás
+      			\end{itemize}
+  További funkciók a parancssorban:
+  \item \textbf{f}: Az eredményt kiírja fájlba.
+  \item \textbf{t}: Diagnosztikai információk generálása
+  		\begin{itemize}
+  		   				\item {0}: some trace
+  		      			\item {1}: shortest trace (deaktiválja az újrafelhasználást)
+  		      			\item {2}: fastest trace (deaktiválja az újrafelhasználást)
+  		      			\item {3}: best trace (deaktiválja az újrafelhasználást, aktiválja az -O4 kapcsolót)
+  		      			\end{itemize}
+  	\item {u}: Az ütemezés után összegzett információt mutat az eredményekről.
    \end{itemize}
+   
+A parancssori futtatáshoz az alábbi parancssorrendet használtam.
+   \begin{itemize}
+	   \item {veriyta}
+	   \item {E, C, n, o, S kapcsolók}
+	   \item {az ütemezni kívánt modell neve kiterjesztéssel}
+	   \item {az ütemezéshez szükséges query}\\\\
+   \end{itemize}
+   
+Példa a Modell 1 parancssori ütemezésére kapcsolókkal:
+\begin{center}
+  verifyta -C -n0 -o1 -S0 Model1.xml q2.q\\
+\end{center}
+Először a kapcsolókat adjuk meg, majd az UPPAAL-ban létrehozott modell nevét, végül pedig az UPPAAL Verifier menüpontjában deklarált query-ből mentett fájl nevét.  
+  
+  
    Az ütemezés során minden modellt lefuttattunk minden kapcsolókombinációval egy adott feladatmenetre, ezután megvizsgáltuk, hogy melyik modell melyik kombinációval adja leggyorsabban az optimális megoldást. Az eredményeket az alábbi táblázat tartalmazza.\ref{tab:kapcsolo}\\
    \begin{table}[htpb]
    \label{tab:kapcsolo}
@@ -480,6 +571,7 @@ A feladat lényege, hogy minden feladat elvégzésre kerüljön a saját határi
     	11 &  &  &  &  & > 1 min \\ 
     	\end{tabular} 
     	\caption{A modellek futtatása kapcsolókkal}
+    	
    \end{table}
     A táblázatban látható, hogy melyik kapcsolókkal futott le leggyorsabban az adott modell ütemezése.\\\\
     Modell 1: -E -n1 -o3 -S1\\
