@@ -37,8 +37,35 @@ const int munkaido[25][gepszam] =
 {5952, -1, 3448, 4902}
 };
 
+const int atallasi_ido[20][20] = 
+{
+{0, 300, 800, 1500, 600, 500, 2000, 1100, 0, 0, 500, 1000, 200, 800, 700, 500, 1800, 0, 2500, 300},
+{200, 0, 1300, 900, 2500, 200, 800, 2500, 400, 0, 600, 2500, 500, 200, 600, 0, 1100, 0, 800, 2500},
+{500, 900, 0, 500, 700, 400, 1500, 400, 900, 0, 200, 1500, 800, 700, 0, 2000, 600, 0, 500, 1300},
+{1100, 700, 200, 0, 800, 2000, 900, 0, 1300, 0, 1500, 1000, 1800, 600, 1300, 600, 1500, 0, 1000, 500},
+{500, 1000, 0, 1300, 0, 500, 2000, 1300, 900, 0, 400, 300, 2000, 1000, 2000, 700, 200, 0, 300, 900},
+{200, 0, 1300, 1000, 1000, 0, 700, 1300, 800, 0, 700, 600, 500, 700, 500, 2000, 900, 0, 1100, 500},
+{900, 500, 1100, 0, 1400, 600, 0, 4000, 500, 0, 500, 800, 300, 400, 1100, 500, 1500, 0, 900, 1500},
+{1500, 2000, 400, 1300, 500, 900, 700, 0, 900, 0, 400, 1800, 600, 1500, 600, 500, 700, 0, 900, 1100},
+{2500, 600, 500, 800, 600, 1800, 600, 200, 0, 0, 2000, 1500, 2000, 0, 600, 900, 1300, 1800, 700, 800},
+{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 1300, 0, 0, 0, 0, 0, 0, 800, 0},
+{800, 1000, 1300, 800, 1100, 400, 2500, 900, 2000, 0, 0, 800, 1000, 2500, 1500, 600, 800, 2500, 1300, 600},
+{200, 700, 600, 300, 900, 300, 500, 200, 400, 400, 200, 0, 2000, 1100, 900, 200, 2000, 0, 600, 500},
+{900, 800, 1300, 1100, 1300, 600, 400, 1500, 500, 0, 400, 1800, 0, 0, 1800, 800, 600, 0, 2500, 1000},
+{1800, 1500, 2000, 1500, 400, 2500, 500, 500, 1100, 0, 600, 1500, 800, 0, 500, 500, 0, 0, 1100, 1500},
+{1500, 900, 1300, 900, 600, 100, 200, 1100, 300, 0, 1300, 500, 400, 600, 0, 1300, 1000, 0, 1300, 1000},
+{1300, 2000, 1500, 500, 400, 900, 1800, 600, 700, 0, 1500, 2000, 600, 400, 800, 0, 900, 0, 500, 200},
+{700, 700, 900, 800, 1400, 600, 800, 1000, 600, 0, 900, 400, 500, 900, 2000, 1300, 0, 0, 700, 1100},
+{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 1300, 0, 0, 0, 0, 0, 0, 1300, 0},
+{600, 500, 1100, 500, 400, 1400, 900, 400, 600, 400, 2500, 0, 700, 700, 500, 1300, 700, 200, 0, 2000},
+{700, 500, 2000, 1400, 0, 1100, 500, 600, 1400, 2000, 400, 900, 2000, 800, 700, 300, 500, 0, 800, 0}
+};
+
+
+
 int[-1,munkaszam-1] gallapot[gepszam]={-1,-1,-1,-1};
-int[0,2] mallapot[munkaszam]={0,0,0};
+int[-1,munkaszam-1] elozo[gepszam]={-1,-1,-1,-1};
+int[0,3] mallapot[munkaszam]={0,0,0};
 
 const int hatarido[25] = {15000, 30000, 22000, 25000, 20000, 30000, 21000, 26000, 30000, 29000, 30000, 21000, 30000, 25000, 24000, 30000, 30000, 30000, 13000, 19000, 30000, 20000, 12000, 30000, 17000};
 
@@ -48,8 +75,12 @@ clock c[gep_id];
 
 int[0,munkaszam] todo = munkaszam;
 
-</declaration><template><name>P0</name><declaration>int ktg=-1;
-</declaration><location id="id0" x="-392" y="-80"></location><init ref="id0"/><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-288" y="-72">m: munka_id</label><label kind="guard" x="-288" y="-40">time==hatarido[m] &amp;&amp; mallapot[m]==1</label><label kind="assignment" x="-288" y="-8">mallapot[m]=2, ktg==1, todo--</label><nail x="-304" y="80"/><nail x="-456" y="80"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-392" y="-328">g: gep_id</label><label kind="guard" x="-392" y="-296">gallapot[g]!=-1 &amp;&amp; c[g]==munkaido[gallapot[g]][g]</label><label kind="assignment" x="-392" y="-264">ktg+=1, mallapot[gallapot[g]]=1, gallapot[g]=-1</label><nail x="-340" y="-234"/><nail x="-208" y="-232"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-704" y="-96">m : munka_id, g: gep_id</label><label kind="guard" x="-872" y="-64">time &lt;= hatarido[m]-munkaido[m][g] &amp;&amp; mallapot[m]==0 &amp;&amp; gallapot[g]==-1</label><label kind="assignment" x="-688" y="-128">gallapot[g]=m, c[g]=0</label><nail x="-536" y="-80"/><nail x="-536" y="-224"/></transition></template><system>// Place template instantiations here.
+int getReserveTime(gep_id gid){
+  	int toReturn = 0;
+ 	 if(elozo[gid]!=-1) toReturn += atallasi_ido [elozo[gid]][gallapot[gid]];
+  	return toReturn + munkaido[gallapot[gid]][gid];
+}</declaration><template><name>P0</name><declaration>int ktg=-1;
+</declaration><location id="id0" x="-392" y="-80"><label kind="invariant" x="-376" y="-88">cost'==ktg</label></location><init ref="id0"/><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-288" y="-72">m: munka_id</label><label kind="guard" x="-288" y="-40">time==hatarido[m] &amp;&amp; mallapot[m]==2</label><label kind="assignment" x="-288" y="-8">mallapot[m]=3, ktg-=1, todo--</label><nail x="-304" y="80"/><nail x="-456" y="80"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-392" y="-328">g: gep_id</label><label kind="guard" x="-392" y="-296">gallapot[g]!=-1 &amp;&amp; c[g]==getReserveTime(g)</label><label kind="assignment" x="-392" y="-264">ktg+=1, mallapot[gallapot[g]]=2, elozo[g]=gallapot[g], gallapot[g]=-1</label><nail x="-340" y="-234"/><nail x="-208" y="-232"/></transition><transition><source ref="id0"/><target ref="id0"/><label kind="select" x="-728" y="-208">m : munka_id, g: gep_id</label><label kind="guard" x="-1128" y="-184">time &lt;= hatarido[m]-munkaido[m][g] &amp;&amp; mallapot[m]==0 &amp;&amp; gallapot[g]==-1</label><label kind="assignment" x="-712" y="-160">gallapot[g]=m, c[g]=0, mallapot[m]=1</label><nail x="-536" y="-80"/><nail x="-536" y="-224"/></transition></template><system>// Place template instantiations here.
 
 
 // List one or more processes to be composed into a system.
