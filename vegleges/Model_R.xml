@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+
+
+const bool useremaining = false;
+
+
+const int gepszam = 1;
+
+typedef int[0, gepszam-1] gep_id;
+
+
+
+
+
+const int munkaszam = 4;
+typedef int[0, munkaszam-1] munka_id;
+const int hossz[munkaszam] = {2,3,5,4};	//feladatok hossza
+const int hatarido_ossz[munkaszam] = {6,8,12,20};		//feladatok végső határideje
+const int pr[munkaszam] = {4,3,40,8};	//költségek
+
+const int atallasi_ido[5][5] = 
+{
+{0, 1, 1, 1, 0}, 
+{0, 0, 1, 0, 0},
+{1, 0, 0, 0, 1},
+{1, 0, 1, 0, 0},
+{0, 1, 0, 1, 0}
+};
+
+
+int fhatarido(int kisjob) {
+  int i;
+  for(i=0; kisjob &gt; hossz[i]; i++)
+    kisjob-=hossz[i];
+  return hatarido_ossz[i]-hossz[i]+kisjob;
+}
+
+int fkoltseg(int kisjob) {
+  int i;
+  for(i=0; kisjob &gt; hossz[i]; i++)
+    kisjob-=hossz[i];
+  return pr[i]/hossz[i];
+}
+
+
+int tulvagyunkrajta[5]={0,0,0,0,0};
+
+
+int minTime(munka_id mid){
+  int toReturn=9999;
+  for(gid: gep_id) {
+    if(hossz[mid]&lt;toReturn) toReturn = hossz[mid];
+  }
+return toReturn;
+}
+
+void settulvagyunk(munka_id jobid){
+  int from=0;
+  int i;
+  for(i=0;i&lt;jobid;i++)
+    from += hossz[i];
+  
+  for(i=0; i&lt;hossz[jobid]; i++)
+    tulvagyunkrajta[i+from]=1;
+}
+
+meta int remaining;
+
+
+int remainingf() {
+
+  if (useremaining==false) { return 0; }
+  else {
+  
+  int maxhatarido=0;
+
+  // 0: nem kell meg utemezni
+  // 1: utemezni kell
+  // 2: mar utemezve van
+  int allapot[5] = {0,0,0,0,0};
+
+  // utemezes[i]== az i. task mikorra van beutemezve
+  int utemezes[5];
+  int mki=0;
+  int i=0;
+  int t=0;
+  int osszkoltseg=0;
+
+  // megkeressuk a max deadline-t
+  for(i=0;i&lt;5;i++)
+    if(maxhatarido&lt;fhatarido(i))
+      maxhatarido=fhatarido(i);
+
+  
+ 
+  for(t=maxhatarido;t&gt;=0;t--) {
+    
+    for(i=0;i&lt;5;i++)
+      if(tulvagyunkrajta[i]==0 &amp;&amp; allapot[i]==0 &amp;&amp; fhatarido(i)==t)
+        allapot[i]=1;
+
+    mki=-1;
+    for(i=0;i&lt;5;i++)
+      if(allapot[i]==1 &amp;&amp; (mki==-1 || fkoltseg(i)&gt;fkoltseg(mki)))	
+        mki=i;
+
+    // Ha van utemezendo
+    if(mki!=-1){
+      allapot[mki]=2;
+      utemezes[mki]=t;
+    }
+  }
+  
+  for(i=0;i&lt;5;i++)
+    osszkoltseg += (fhatarido(i)-utemezes[i])*fkoltseg(i);
+
+  return osszkoltseg;
+  }
+}
+
+
+int[-1,munkaszam-1] elozo=-1;
+int[-1,munkaszam-1] aktualis=-1;
+
+const int beallasido = 5;
+
+chan foglal;
+chan kezdodik;
+chan elenged;
+
+clock time;
+
+int[0,munkaszam] todo = munkaszam;</declaration><template><name x="5" y="5">Gep</name><parameter>const munka_id id</parameter><declaration>// Place local declarations here.
+clock t;
+int remain;</declaration><location id="id0" x="320" y="-112"></location><location id="id1" x="112" y="-112"><committed/></location><location id="id2" x="320" y="0"><name x="336" y="-16">Dolgozik</name><label kind="invariant" x="336" y="0">t&lt;=hossz[aktualis]</label></location><location id="id3" x="24" y="0"><name x="-72" y="-8">Bekapcsolt</name></location><init ref="id3"/><transition><source ref="id0"/><target ref="id2"/><label kind="guard" x="328" y="-96">t&gt;=atallasi_ido[elozo][aktualis]</label><label kind="synchronisation" x="328" y="-72">kezdodik!</label><label kind="assignment" x="328" y="-48">t=0</label></transition><transition><source ref="id1"/><target ref="id0"/><label kind="guard" x="192" y="-136">elozo!=-1</label><nail x="304" y="-112"/><nail x="304" y="-112"/></transition><transition><source ref="id1"/><target ref="id2"/><label kind="guard" x="120" y="-78">elozo==-1</label><label kind="synchronisation" x="120" y="-56">kezdodik!</label><nail x="112" y="0"/></transition><transition><source ref="id3"/><target ref="id1"/><label kind="guard" x="-104" y="-104">time &gt;= beallasido</label><label kind="synchronisation" x="-32" y="-80">foglal?</label><label kind="assignment" x="-16" y="-56">t=0</label><nail x="24" y="-112"/><nail x="80" y="-112"/><nail x="96" y="-112"/></transition><transition><source ref="id2"/><target ref="id3"/><label kind="synchronisation" x="80" y="56">elenged?</label><label kind="assignment" x="48" y="72">elozo=aktualis</label><nail x="320" y="56"/><nail x="24" y="56"/></transition></template><template><name>Feladatok</name><parameter>const munka_id id</parameter><declaration>
+clock ora;
+</declaration><location id="id4" x="-96" y="-8"><name x="-304" y="-24">Gep_befoglalva_atallasra_var</name><label kind="invariant" x="-64" y="-16">time &lt;= hatarido_ossz[id] - minTime(id)</label></location><location id="id5" x="-96" y="280"><name x="-192" y="272">Leszallitva</name></location><location id="id6" x="-96" y="192"><name x="-152" y="184">Kesz</name><label kind="invariant" x="-80" y="184">cost' == 1 &amp;&amp; time &lt;= hatarido_ossz[id]</label></location><location id="id7" x="-96" y="88"><name x="-160" y="80">Munka</name><label kind="invariant" x="-64" y="80">time &lt;= hatarido_ossz[id]</label></location><location id="id8" x="-96" y="-152"><name x="-152" y="-160">Start</name><label kind="invariant" x="-72" y="-160">time &lt;= hatarido_ossz[id] - minTime(id)</label></location><init ref="id8"/><transition><source ref="id4"/><target ref="id7"/><label kind="synchronisation" x="-80" y="8">kezdodik?</label><label kind="assignment" x="-80" y="24">ora=0,
+settulvagyunk(id),
+remaining=remainingf()</label></transition><transition><source ref="id6"/><target ref="id5"/><label kind="guard" x="-88" y="224">time == hatarido_ossz[id]</label><label kind="assignment" x="-88" y="240">todo--</label></transition><transition><source ref="id7"/><target ref="id6"/><label kind="guard" x="-88" y="120">ora == hossz[id]</label><label kind="synchronisation" x="-88" y="136">elenged!</label></transition><transition><source ref="id8"/><target ref="id4"/><label kind="guard" x="-88" y="-120">hossz[id]!=100000</label><label kind="synchronisation" x="-88" y="-96">foglal!</label><label kind="assignment" x="-88" y="-72">aktualis=id</label></transition></template><system>// Place template instantiations here.
+
+
+// List one or more processes to be composed into a system.
+system Gep, Feladatok;</system></nta>
